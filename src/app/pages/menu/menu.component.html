@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Menu</title>
+</head>
+
+<body>
+    <!-- Sección: Login -->
+<div hidden id="login" class="contelogin">
+    <h2>INICIAR SESIÓN</h2>
+    <form>
+        <label for="username">Correo:</label>
+        <input type="text" id="emaillog" name="username" required>
+        <label for="password">Contraseña:</label>
+        <input type="password" id="passwordlog" name="password" required>
+    </form>
+    <br>
+    <div class="button-container">
+        <button type="submit" id="login">Ingresar</button>
+        <button type="submit" id="cerrar">Cerrar Sesión</button>
+    </div>
+    <p>¿Deseas crear una cuenta? <a href="/registro.html">Regístrate aquí, ¿Qué esperas?</a>.</p>
+</div>
+
+<!-- Sección: Registrarme -->
+<div hidden id="registro" class="conteregistro">
+    <h2>REGISTRARME</h2>
+	<form>
+		<label for="email">Correo electrónico:</label>
+		<input type="email" id="emailreg" name="email" required>
+		<br>
+		<label for="password">Contraseña:</label>
+		<input type="password" id="passwordreg" name="password" required>
+		
+	</form>
+    <button type="submit" id="registro">Registrarse</button>
+    <p>¿Deseas crear un cuenta? <a href="login.html">Inicia sesión aquí</a>.</p>
+</div>
+
+</body>
+
+</html>
