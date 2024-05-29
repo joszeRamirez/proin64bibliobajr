@@ -92,3 +92,22 @@
         max-width: 250px;
     }
 }
+
+nav {
+    background-color: rgb(93, 89, 89);
+    padding: 10px;
+    display: flex;
+    justify-content: flex-end;
+}
+
+nav button {
+    color: white;
+    background: none;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+}
+
+nav button:hover {
+    background-color: rgba(9, 8, 8, 0.1);
+}

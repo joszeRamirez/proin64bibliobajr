@@ -5,12 +5,17 @@
 <div class="encabezado">
 
 </div>
+<nav>
+    <button (click)="Login()">Ingresar</button>
+    <button (click)="Registro()">Registro</button>
+</nav>
 <div class="inicio">
-    <img src=""/>
+    <img src="" />
     <h2>Bienvenido!</h2>
     <div class="cuadro-inicio izq">{{correo}}</div>
     <div class="cuadro-inicio der">{{correo}} Obras Disponibles</div>
 </div>
+
 <div class="resto">
     <router-outlet></router-outlet>
 </div>
@@ -39,3 +44,6 @@
         <small>Hecho por Bryan Ávila y José Ramírez</small>
     </div>
 </footer>
+
+
+<router-outlet></router-outlet>

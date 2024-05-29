@@ -3,11 +3,15 @@ import { Component } from '@angular/core';
 import { RouterLink, RouterOutlet } from '@angular/router';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { LibroService } from './services/libro.service';
+import { Router } from '@angular/router';
+import { LoginComponent } from './login/login.component';
+import { RegistroComponent } from './registro/registro.component';
+
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet, MatSlideToggleModule, RouterLink],
+  imports: [MatSlideToggleModule, LoginComponent, RegistroComponent, RouterOutlet],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss'
 })
@@ -16,7 +20,7 @@ export class AppComponent {
   correo = 'asistencia@bibliobajr.com'
   obras = 0
 
-  constructor(private firestore: AngularFirestore,private libroService:LibroService){}
+  constructor(private router: Router,private firestore: AngularFirestore,private libroService:LibroService){}
 
   async getCantidadDatos() {
     try {
@@ -27,8 +31,12 @@ export class AppComponent {
       console.error('Error al obtener la cantidad de datos:', error);
     }
   }
-  numerarObras(){
-    obras = this.libroService.getLibros()
-    
+
+  Login() {
+    this.router.navigate(['/login']);
+  }
+
+  Registro() {
+    this.router.navigate(['/registro']);
   }
 }

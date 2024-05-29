@@ -1,6 +1,12 @@
 import { Routes } from '@angular/router';
-import { MenuComponent } from './pages/menu/menu.component';
+import { LoginComponent } from './login/login.component';
+import { AppComponent } from './app.component';
+import { RegistroComponent } from './registro/registro.component';
 
-export const routes: Routes = [
-    { path: 'login', title: 'Inicio Sesión', component: MenuComponent }
+const routes: Routes = [
+  { path: '', component: AppComponent },
+  { path: 'login', component: LoginComponent },
+  { path: 'registro', component: RegistroComponent }
 ];
+
+export default routes;
