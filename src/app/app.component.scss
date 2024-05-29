@@ -1,19 +1,113 @@
+/* Estilos: Pie de la Página */
+
+.piepagina {
+    width: 100%;
+    background-color: #757575;
+    padding-top: 20px;
+    padding-bottom: 20px;
+}
+
+.piepagina .part1 {
+    width: 90%;
+    max-width: 1200px;
+    margin: auto;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-gap: 50px;
+    padding: 45px 0px;
+}
+
+.piepagina .part1 .box {
+    text-align: center;
+}
+
+.piepagina .part1 .box figure {
+    width: 80%;
+    height: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.piepagina .part1 .box figure img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+    margin: 0 auto;
+}
+
+.piepagina .part1 .box h2 {
+    color: #fff;
+    margin-bottom: 25px;
+    font-size: 20px;
+    font-family: Helvetica;
+}
+
+.piepagina .part1 .box p {
+    color: #efefef;
+    margin-bottom: 10px;
+}
+
+.piepagina .part1 .redsocial {
+    text-align: center;
+}
+
+.piepagina .part1 .redsocial a {
+    display: inline-block;
+    text-decoration: none;
+    width: 45px;
+    height: 45px;
+    line-height: 45px;
+    color: #fff;
+    margin-right: 10px;
+    margin-bottom: 10px;
+    background-color: #454545;
+    text-align: center;
+    transition: all 300ms ease;
+}
+
+.piepagina .part1 .redsocial a:hover {
+    color: black;
+}
+
+.piepagina .part2 {
+    background-color: #454545;
+    padding: 15px 10px;
+    text-align: center;
+    color: #fff;
+}
+
+.piepagina .part2 small {
+    font-size: 15px;
+}
+
+@media screen and (max-width:800px) {
+    .piepagina .part1 {
+        grid-template-columns: repeat(1, 1fr);
+        grid-gap: 30px;
+        padding: 35px 0px;
+    }
+
+    .piepagina .part1 .box figure img {
+        max-width: 250px;
+    }
+}
+
 nav {
     background-color: rgb(93, 89, 89);
     padding: 10px;
     display: flex;
     justify-content: flex-end;
-  }
-  
-  nav button {
+}
+
+nav button {
     color: white;
     background: none;
     border: none;
     padding: 10px 20px;
     cursor: pointer;
-  }
-  
-  nav button:hover {
+}
+
+nav button:hover {
     background-color: rgba(9, 8, 8, 0.1);
-  }
-  
+}
