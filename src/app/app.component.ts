@@ -1,21 +1,17 @@
 import { Component } from '@angular/core';
-import { Router } from '@angular/router';
-import { RouterOutlet } from '@angular/router';
-import { MatSlideToggleModule } from '@angular/material/slide-toggle';
-import { LoginComponent } from './login/login.component';
-import { RegistroComponent } from './registro/registro.component';
-
+import { Router, RouterLink, RouterOutlet } from '@angular/router';
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [MatSlideToggleModule, LoginComponent, RegistroComponent, RouterOutlet],
+  imports: [RouterLink, RouterOutlet],
   templateUrl: './app.component.html',
-  styleUrl: './app.component.scss'
+  styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
+  title = 'biblioteca-online';
 
-  constructor(private router: Router) { }
+  constructor(private router: Router) {}
 
   Login() {
     this.router.navigate(['/login']);
