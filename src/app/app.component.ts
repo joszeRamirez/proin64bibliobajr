@@ -25,8 +25,8 @@ export class AppComponent {
   async getCantidadDatos() {
     try {
       const snapshot = await this.firestore.collection('libros').get().toPromise();
-      const cantidadDatos = snapshot.size;
-      console.log('Cantidad de datos:', cantidadDatos);
+      // const cantidadDatos = snapshot.size;
+      // console.log('Cantidad de datos:', cantidadDatos);
     } catch (error) {
       console.error('Error al obtener la cantidad de datos:', error);
     }
