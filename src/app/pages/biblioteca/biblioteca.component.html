@@ -1,0 +1,19 @@
+<table>
+    <h2>Colección de Libros</h2>
+
+    <tr>
+        <th>Portada</th>
+        <th>Título</th>
+        <th>Autores</th>
+        <th>Editorial</th>
+    </tr>
+    @for(libro of libros; track libro.titulo){
+    <tr>
+        <td><img src="{{libro.portada}}" /></td>
+        <td>{{libro.titulo}}</td>
+        <td>{{libro.autores}}</td>
+        <td>{{libro.editorial}}</td>
+    </tr>
+    }
+
+</table>
