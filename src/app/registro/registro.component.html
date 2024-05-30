@@ -1,31 +1,31 @@
 <div class="register-container">
-  <form (ngSubmit)="register(email.value, username.value, password.value)">
+  <form (ngSubmit)="register()">
     <h2>Registrarse</h2>
     <p>Al crear tu cuenta en esta biblioteca online podrás acceder a la lista de libros registrados</p><br>
     <div class="input-group">
       <div>
         <label for="email">Correo Electrónico:</label>
-        <input type="email" id="email" name="email" #email required>
+        <input [(ngModel)]="user.correo" type="email" id="email" name="email" #email required>
       </div>
       <div>
         <label for="username">Nombre de usuario:</label>
-        <input type="text" id="username" name="username" #username required>
+        <input [(ngModel)]="user.user" type="text" id="username" name="username" #username required>
       </div>
     </div>
     <div class="input-group">
       <div>
         <label for="firstName">Nombre:</label>
-        <input type="text" id="firstName" name="firstName" required>
+        <input [(ngModel)]="user.nombre" type="text" id="firstName" name="firstName" required>
       </div>
       <div>
         <label for="lastName">Apellido:</label>
-        <input type="text" id="lastName" name="lastName" required>
+        <input [(ngModel)]="user.apellido" type="text" id="lastName" name="lastName" required>
       </div>
     </div>
     <div class="input-group">
       <div>
         <label for="password">Contraseña:</label>
-        <input type="password" id="password" name="password" #password required>
+        <input [(ngModel)]="user.passwo" type="password" id="password" name="password" #password required>
       </div>
       <div>
         <label for="confirmPassword">Confirmar Contraseña:</label>
