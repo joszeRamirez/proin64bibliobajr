@@ -17,31 +17,31 @@ export class BibliotecaComponent {
 
   constructor(private libroService: LibroService) { }
 
-  ngOnInit() {
-    this.libroService.getLibros().then(data => {
+  // ngOnInit() {
+  //   this.libroService.getLibros().then(data => {
 
-      this.libros = data.docs.map((doc: any) => {
-        console.log(doc.id)
-        console.log(doc.data())
-        return {
-          id: doc.id,
-          ...doc.data()
-        }
-      })
+  //     this.libros = data.docs.map((doc: any) => {
+  //       console.log(doc.id)
+  //       console.log(doc.data())
+  //       return {
+  //         id: doc.id,
+  //         ...doc.data()
+  //       }
+  //     })
 
-      console.log('libros', this.libros)
-    })
-  }
+  //     console.log('libros', this.libros)
+  //   })
+  // }
 
-  cargarLibro(titulo: string) {
-    // this.libroService.getLibro(titulo).subscribe(data => {
-    //   this.libro = data
-    // })
-  }
+  // cargarLibro(titulo: string) {
+  //   // this.libroService.getLibro(titulo).subscribe(data => {
+  //   //   this.libro = data
+  //   // })
+  // }
 
-  guardar() {
+  // guardar() {
 
-    this.libroService.addLibro(this.libro)
-    this.ngOnInit()
-  }
+  //   this.libroService.addLibro(this.libro)
+  //   this.ngOnInit()
+  // }
 }

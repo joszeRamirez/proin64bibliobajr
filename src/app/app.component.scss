@@ -96,11 +96,22 @@
 nav {
     background-color: rgb(93, 89, 89);
     padding: 10px;
-    display: flex;
-    justify-content: flex-end;
+    display: inline-flex;
+    list-style: none;
 }
 
-nav button {
+nav .izq {
+    position: absolute;
+    top: 15px;
+    left: 15px;
+}
+
+nav .der {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+}
+nav .der button {
     color: white;
     background: none;
     border: none;
@@ -108,6 +119,6 @@ nav button {
     cursor: pointer;
 }
 
-nav button:hover {
+nav .der button:hover {
     background-color: rgba(9, 8, 8, 0.1);
 }
