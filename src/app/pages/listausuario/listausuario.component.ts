@@ -1,12 +1,22 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { UserService } from '../../services/user.service'; 
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-listausuario',
   standalone: true,
-  imports: [],
+  imports: [CommonModule],
   templateUrl: './listausuario.component.html',
-  styleUrl: './listausuario.component.scss'
+  styleUrls: ['./listausuario.component.scss']
 })
-export class ListausuarioComponent {
+export class ListaUsuarioComponent implements OnInit {
+  usuarios: any[] = [];
 
+  constructor(private userService: UserService) { }
+
+  ngOnInit() {
+    this.userService.getUsers().subscribe(users => {
+      this.usuarios = users;
+    });
+  }
 }

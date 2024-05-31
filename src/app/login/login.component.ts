@@ -15,7 +15,6 @@ export class LoginComponent {
     const auth = getAuth();
     signInWithEmailAndPassword(auth, username, password)
       .then((userCredential) => {
-        // Signed in 
         const user = userCredential.user;
         console.log('Login successful', user);
         this.router.navigate(['/']);

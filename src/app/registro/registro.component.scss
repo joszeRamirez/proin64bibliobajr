@@ -55,7 +55,9 @@ p {
   }
   
   .button-container {
-    text-align: center;
+    display: flex;
+    justify-content: center; 
+    gap: 50px; 
   }
   
   button {
@@ -71,4 +73,7 @@ p {
   button:hover {
     background-color: #45a049;
   }
+  
+  
+  
   

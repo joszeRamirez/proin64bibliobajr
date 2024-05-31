@@ -3,6 +3,8 @@ import { getAuth, createUserWithEmailAndPassword } from '@angular/fire/auth';
 import { Router } from '@angular/router';
 import { User } from '../../domain/user';
 import { FormsModule } from '@angular/forms';
+import { AuthService } from '../services/auth.service';
+
 
 
 @Component({
@@ -13,7 +15,7 @@ import { FormsModule } from '@angular/forms';
   styleUrls: ['./registro.component.scss']
 })
 export class RegistroComponent {
-  constructor(private router: Router) {}
+  constructor(private router: Router, public authService: AuthService) {}
 
   user: User = new User();
 
@@ -22,15 +24,16 @@ export class RegistroComponent {
     createUserWithEmailAndPassword(auth, this.user.correo, this.user.passwo)
       .then((userCredential) => {
 
-        // Registered
         const user = userCredential.user;
-        console.log('Registration successful', user);
+        console.log('Registro Completado', user);
         this.router.navigate(['/login']);
       })
       .catch((error) => {
         const errorCode = error.code;
         const errorMessage = error.message;
-        console.error('Error during registration', errorCode, errorMessage);
+        console.error('Error, intente de nuevo', errorCode, errorMessage);
       });
   }
+
+  
 }

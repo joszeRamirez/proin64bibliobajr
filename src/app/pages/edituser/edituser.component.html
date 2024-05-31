@@ -1,1 +1,48 @@
-<p>edituser works!</p>
+<div class="container">
+    <nav>
+        <a href="#">Inicio</a> : <a href="#">Editar Perfil</a>
+    </nav>
+    <h1>Edición del Usuario</h1>
+    <form>
+        <div class="form-group">
+            <label for="imageUpload">Imagen de usuario</label>
+            <input type="file" id="imageUpload" accept="image/*">
+            <img src="https://via.placeholder.com/150" alt="Imagen de usuario">
+        </div>
+        <div class="form-group">
+            <div class="input-group">
+                <label for="username">Nombre de usuario:</label>
+                <input type="text" id="username" name="username">
+            </div>
+            <div class="input-group">
+                <label for="firstName">Nombre:</label>
+                <input type="text" id="firstName" name="firstName">
+            </div>
+            <div class="input-group">
+                <label for="lastName">Apellido:</label>
+                <input type="text" id="lastName" name="lastName">
+            </div>
+            <div class="input-group">
+                <label for="email">E-mail:</label>
+                <input type="email" id="email" name="email">
+            </div>
+            <div class="input-group">
+                <label for="phone">Teléfono:</label>
+                <input type="tel" id="phone" name="phone">
+            </div>
+            <div class="input-group">
+                <label for="location">Ubicación:</label>
+                <input type="text" id="location" name="location">
+            </div>
+            <div class="input-group">
+                <label for="socialUrl">URL Red Social:</label>
+                <input type="url" id="socialUrl" name="socialUrl">
+            </div>
+        </div>
+        <div class="button-container">
+            <button type="submit">Guardar</button>
+            <button type="button">Cancelar</button>
+        </div>
+    </form>
+</div>
+<br><br>
