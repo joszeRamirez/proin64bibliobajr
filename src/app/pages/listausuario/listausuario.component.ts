@@ -5,16 +5,17 @@ import { User } from '../../../domain/user';
 import { Router } from '@angular/router';
 import { IconEdit } from '../../icons/edit';
 import { AsyncPipe } from '@angular/common';
+import { HeaderComponent } from '../../header/header.component';
 
 @Component({
   selector: 'app-users',
   standalone: true,
-  imports: [FormsModule, ReactiveFormsModule, IconEdit, AsyncPipe],
+  imports: [FormsModule, ReactiveFormsModule, IconEdit, AsyncPipe, HeaderComponent],
   templateUrl: './listausuario.component.html',
   styleUrls: ['./listausuario.component.scss']
 })
 export class listausuario implements OnInit {
-  
+
   users: any[] = []
   buscateste: string = ''
 
@@ -34,26 +35,30 @@ export class listausuario implements OnInit {
 
       console.log('Users', this.users)
     })
-}
-
-async changeQuery() {
-  console.log(this.buscateste)
-  try {
-    await this.userservices.searchUserByQuery(this.buscateste).then(data => {
-
-      this.users = data.docs.map((doc: any) => {
-        return {
-          id: doc.id,
-          ...doc.data()
-        }
-      })
-      console.log('usuarios', this.users)
-    });
-  } catch (error) {
-    console.error(error)
   }
-}
-editUser(user: User) {
-  this.router.navigate(['/edituseradmin', user.id]);
-}
+
+  async changeQuery() {
+    console.log(this.buscateste)
+    try {
+      await this.userservices.searchUserByQuery(this.buscateste).then(data => {
+
+        this.users = data.docs.map((doc: any) => {
+          return {
+            id: doc.id,
+            ...doc.data()
+          }
+        })
+        console.log('usuarios', this.users)
+      });
+    } catch (error) {
+      console.error(error)
+    }
+  }
+  editUser(user: User) {
+    this.router.navigate(['/edituseradmin', user.id]);
+  }
+
+  volver() {
+    this.router.navigate(['/biblioteca']);
+  }
 }

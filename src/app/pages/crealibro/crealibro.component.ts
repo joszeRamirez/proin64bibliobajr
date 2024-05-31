@@ -4,6 +4,7 @@ import { Router, RouterLink } from '@angular/router';
 import { IconRocket } from '../../icons/rocket';
 import { Libro } from '../../../domain/libro';
 import { LibroService } from '../../services/libro.service';
+import { HeaderComponent } from '../../header/header.component';
 
 export interface CreateForm {
   portada: FormControl<string>;
@@ -19,7 +20,7 @@ export interface CreateForm {
 @Component({
   selector: 'app-crealibro',
   standalone: true,
-  imports: [ReactiveFormsModule, RouterLink, IconRocket],
+  imports: [ReactiveFormsModule, RouterLink, IconRocket, HeaderComponent],
   templateUrl: './crealibro.component.html',
   styleUrl: './crealibro.component.scss'
 })
@@ -50,6 +51,10 @@ export class CrealibroComponent {
   });
   retroceder() {
     this.router.navigate(['/biblioadmin']);
+  }
+  
+  volver() {
+    this.router.navigate(['/biblioteca']);
   }
   
   async crearLibro() {

@@ -22,4 +22,13 @@ export class HeaderComponent {
   pasarNeim(name: string) {
     this.usuario = name;
   }
+
+  irListaUser() {
+    this.router.navigate(['/listausuario']);
+  }
+
+  irBibliAdmin() {
+    this.router.navigate(['/biblioadmin']);
+  }
+
 }

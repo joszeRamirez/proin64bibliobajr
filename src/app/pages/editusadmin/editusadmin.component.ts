@@ -4,6 +4,7 @@ import { UserService } from '../../services/user.service';
 import { User } from '../../../domain/user';
 import { Router, RouterLink } from '@angular/router';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
+import { HeaderComponent } from '../../header/header.component';
 
 
 
@@ -22,7 +23,7 @@ export interface CreateForm {
 @Component({
   selector: 'app-editusadmin',
   standalone: true,
-  imports: [ReactiveFormsModule, RouterLink, MatSlideToggleModule, FormsModule],
+  imports: [ReactiveFormsModule, RouterLink, MatSlideToggleModule, FormsModule, HeaderComponent],
   templateUrl: './editusadmin.component.html',
   styleUrl: './editusadmin.component.scss'
 })
@@ -53,6 +54,10 @@ export class EditusadminComponent {
     foto: this.formBuilder.control(''),
     socialUrl: this.formBuilder.control('')
   });
+
+  volver() {
+    this.router.navigate(['/biblioteca']);
+  }
 
   async editUser() {
     if (this.form.invalid) return;
