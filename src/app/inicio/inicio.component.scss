@@ -1,4 +1,15 @@
 .presenta {
-    background-image: "assets/fondobiblio.jpg";
-    background-position: center;
+    background-image: url('https://img.freepik.com/vector-gratis/estanteria-interior-biblioteca-ilustracion-fondo-mesa-silla-estante-madera-bibliotecario-dibujos-animados-archivo-escuela-o-universidad-muebles-libreria-grafica-dibujos-animados-escritorio-lampara-pasillo_107791-22653.jpg?w=996&t=st=1717124479~exp=1717125079~hmac=b1928ef3d47758be546e5bea482f3ef7026b6d6b9ddf5218fceefd3c5bb65e18');
+    background-size: cover; /* Para que la imagen cubra todo el div */
+    background-position: center; /* Para que la imagen se posicione en el centro */
+    height: 400px; /* Altura del div */
+    max-width: 100%;
+}
+
+.presenta h2 {
+    position: relative;
+    top: 85%;
+    color: #ffffff;
+    font-size: 60px;
+    margin-left: 5%;
 }

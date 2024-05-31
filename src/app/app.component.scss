@@ -102,16 +102,16 @@ nav {
 
 nav .izq {
     position: absolute;
-    top: 15px;
+
     left: 15px;
 }
 
 nav .der {
     position: absolute;
-    top: 15px;
+
     right: 15px;
 }
-nav .der button {
+nav button {
     color: white;
     background: none;
     border: none;
@@ -119,6 +119,6 @@ nav .der button {
     cursor: pointer;
 }
 
-nav .der button:hover {
+nav button:hover {
     background-color: rgba(9, 8, 8, 0.1);
 }

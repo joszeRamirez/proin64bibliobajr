@@ -11,10 +11,19 @@ import { Component, OnInit } from '@angular/core';
 export class InicioComponent implements OnInit{
   correo = 'asistencia@bibliobajr.com'
   obras = 0
-
+  libros: any[] = []
   constructor(private libroService: LibroService) { }
 
   ngOnInit(): void {
-    
+    this.libroService.getLibros().then(data => {
+
+      this.libros = data.docs.map((doc: any) => {
+        return {
+          id: doc.id,
+          ...doc.data()
+        }
+      })
+    })
   }
+
 }

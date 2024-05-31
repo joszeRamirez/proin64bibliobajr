@@ -18,7 +18,7 @@ export class UserService {
   }
 
   getUser(user: string){
-
+    return user
   }
 
   deleteUser(user: User){
