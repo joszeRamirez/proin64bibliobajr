@@ -29,4 +29,8 @@ export class AppComponent {
   irRegistro() {
     this.router.navigate(['/registro']);
   }
+
+  edituser() {
+    this.router.navigate(['/edituser']);
+  }
 }

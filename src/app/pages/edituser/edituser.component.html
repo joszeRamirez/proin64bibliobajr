@@ -3,36 +3,36 @@
         <a href="#">Inicio</a> : <a href="#">Editar Perfil</a>
     </nav>
     <h1>Edición del Usuario</h1>
-    <form>
+    <form [formGroup]="form" (ngSubmit)="editUser()">
         <div class="form-group">
-            <label for="imageUpload">Imagen de usuario</label>
-            <input type="file" id="imageUpload" accept="image/*">
+            <label for="foto">Imagen de usuario</label>
+            <input type="file" id="foto" accept="image/*">
             <img src="https://via.placeholder.com/150" alt="Imagen de usuario">
         </div>
         <div class="form-group">
             <div class="input-group">
-                <label for="username">Nombre de usuario:</label>
-                <input type="text" id="username" name="username">
+                <label for="user">Nombre de usuario:</label>
+                <input type="text" id="user" name="username">
             </div>
             <div class="input-group">
-                <label for="firstName">Nombre:</label>
-                <input type="text" id="firstName" name="firstName">
+                <label for="nombre">Nombre:</label>
+                <input type="text" id="nombre" name="firstName">
             </div>
             <div class="input-group">
-                <label for="lastName">Apellido:</label>
-                <input type="text" id="lastName" name="lastName">
+                <label for="apellido">Apellido:</label>
+                <input type="text" id="apellido" name="lastName">
             </div>
             <div class="input-group">
-                <label for="email">E-mail:</label>
-                <input type="email" id="email" name="email">
+                <label for="correo">E-mail:</label>
+                <input type="email" id="correo" name="email">
             </div>
             <div class="input-group">
-                <label for="phone">Teléfono:</label>
-                <input type="tel" id="phone" name="phone">
+                <label for="celu">Teléfono:</label>
+                <input type="tel" id="celu" name="phone">
             </div>
             <div class="input-group">
-                <label for="location">Ubicación:</label>
-                <input type="text" id="location" name="location">
+                <label for="ubica">Ubicación:</label>
+                <input type="text" id="ubica" name="location">
             </div>
             <div class="input-group">
                 <label for="socialUrl">URL Red Social:</label>
@@ -41,7 +41,7 @@
         </div>
         <div class="button-container">
             <button type="submit">Guardar</button>
-            <button type="button">Cancelar</button>
+            <button routerLink="biblioteca">Cancelar</button>
         </div>
     </form>
 </div>

@@ -4,10 +4,8 @@ import { IconEdit } from '../../icons/edit';
 import { Libro } from '../../../domain/libro';
 import { LibroService } from '../../services/libro.service';
 import { FormControl, FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { debounceTime, distinctUntilChanged, of } from 'rxjs';
 import { Router } from '@angular/router';
 import { AsyncPipe } from '@angular/common';
-import { toSignal } from '@angular/core/rxjs-interop';
 
 @Component({
   selector: 'app-biblioadmin',

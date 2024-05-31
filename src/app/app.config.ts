@@ -14,7 +14,7 @@ export const appConfig: ApplicationConfig = {
   providers: [provideRouter(routes, withViewTransitions(), withComponentInputBinding()),
   provideAnimationsAsync(),
   importProvidersFrom(HttpClientModule),
-  provideFirebaseApp(() => initializeApp({ "projectId": "proinbibliobajr", "appId": "1:361693218964:web:bab0063df972739b824c81", "storageBucket": "proinbibliobajr.appspot.com", "apiKey": "AIzaSyDHDZGWBN2k86yVFP7puktEVvuepCeGE5w", "authDomain": "proinbibliobajr.firebaseapp.com", "messagingSenderId": "361693218964" })), provideAuth(() => getAuth()), provideFirestore(() => getFirestore())
+  provideFirebaseApp(() => initializeApp({ "projectId": "proinbibliobajr", "appId": "1:361693218964:web:bab0063df972739b824c81", "storageBucket": "proinbibliobajr.appspot.com", "apiKey": "AIzaSyDHDZGWBN2k86yVFP7puktEVvuepCeGE5w", "authDomain": "proinbibliobajr.firebaseapp.com", "messagingSenderId": "361693218964" })), provideAuth(() => getAuth()), provideFirestore(() => getFirestore()), provideAnimationsAsync()
 
   ]
 };

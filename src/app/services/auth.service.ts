@@ -6,6 +6,7 @@ export interface Credential {
   password: string;
 }
 
+
 @Injectable({
   providedIn: 'root'
 })
@@ -55,15 +56,5 @@ export class AuthService {
     }
   }
 
-  // register(email: string, password: string) {
-  //   return from(this.afAuth.createUserWithEmailAndPassword(email, password));
-  // }
-
-  // login(email: string, password: string) {
-  //   return from(this.afAuth.signInWithEmailAndPassword(email, password));
-  // }
-
-  // logout() {
-  //   return from(this.afAuth.signOut());
-  // }
 }
+
