@@ -1,11 +1,13 @@
 export class User {
+    id!: string 
     user: string = ''
     passwo: string = ''
     nombre: string = ''
     apellido: string = ''
     correo: string = ''
-    celu!: string
+    celu!: string 
     ubica!: string
     foto!: string
-    isadmin: boolean = false
+    socialUrl!: string
+    isadmin: number= 0
 }

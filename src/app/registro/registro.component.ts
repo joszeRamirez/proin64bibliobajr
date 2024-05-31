@@ -4,6 +4,7 @@ import { Router } from '@angular/router';
 import { User } from '../../domain/user';
 import { FormsModule } from '@angular/forms';
 import { AuthService } from '../services/auth.service';
+import { UserService } from '../services/user.service';
 
 
 
@@ -15,7 +16,7 @@ import { AuthService } from '../services/auth.service';
   styleUrls: ['./registro.component.scss']
 })
 export class RegistroComponent {
-  constructor(private router: Router, public authService: AuthService) {}
+  constructor(private router: Router, public authService: AuthService, private userservies: UserService) {}
 
   user: User = new User();
 
@@ -26,6 +27,7 @@ export class RegistroComponent {
 
         const user = userCredential.user;
         console.log('Registro Completado', user);
+        this.userservies.addUser(this.user);
         this.router.navigate(['/login']);
       })
       .catch((error) => {

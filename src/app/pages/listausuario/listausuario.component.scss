@@ -1,31 +1,69 @@
-.table-container {
-    margin: 20px auto;
-    width: 90%;
-    max-width: 1000px;
-  }
-  
-  h2 {
-    text-align: center;
-    margin-bottom: 20px;
-  }
-  
-  table {
-    width: 100%;
-    border-collapse: collapse;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  }
-  
-  th, td {
-    padding: 12px;
-    text-align: left;
-    border-bottom: 1px solid #ddd;
-  }
-  
-  th {
-    background-color: #f4f4f4;
-  }
-  
-  tbody tr:hover {
-    background-color: #f1f1f1;
-  }
-  
+.tabla-container {
+  max-width: 750px;
+  margin: 50px auto;
+  padding: 20px;
+  border: 1px solid;
+  border-radius: 5px;
+  background-color: white;
+}
+
+.tabla-container h2 {
+  text-align: center;
+}
+
+table {
+  position: relative;
+  border-collapse: collapse;
+  text-align: center;
+}
+
+td,
+th {
+  border: 1px solid green;
+  padding: 10px;
+  max-width: 300px;
+  width: 300px;
+}
+
+th {
+  background: #798a18;
+  color: #fff;
+  text-transform: uppercase;
+}
+
+td {
+  text-align: center;
+  border-bottom: 2px solid greenyellow;
+  color: #333;
+  font-size: 18px;
+}
+
+.buscacontainer{
+  margin-bottom: 1%;
+}
+
+
+.buscacontainer{
+  margin-bottom: 1%;
+}
+
+.buscacontainer input{
+  width: 70%;
+  height: 25px;
+
+}
+
+.buscacontainer button {
+  background-color: #1c1cbd;
+  color: white;
+  padding: 6px 15px;
+  margin-left: 5%;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+button:hover {
+  background-color: #45a049;
+}

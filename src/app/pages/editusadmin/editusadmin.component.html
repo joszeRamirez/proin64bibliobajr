@@ -1,1 +1,55 @@
-<p>editusadmin works!</p>
+<div class="container">
+    <nav>
+        <a href="#">Inicio</a> : <a href="#">Editar Perfil</a>
+    </nav>
+    <h1>Edición del Usuario</h1>
+    <form [formGroup]="form" (ngSubmit)="editUser()">
+        <div class="form-group">
+            <label for="foto">Imagen de usuario</label>
+            <input type="file" id="foto" accept="image/*" formControlName="foto">
+            <img src="https://via.placeholder.com/150" alt="Imagen de usuario">
+        </div>
+        <div class="form-group">
+            <div class="input-group">
+                <label for="user">Nombre de usuario:</label>
+                <input type="text" id="user" name="username" formControlName="user">
+            </div>
+            <div class="input-group">
+                <label for="nombre">Nombre:</label>
+                <input type="text" id="nombre" name="firstName" formControlName="nombre">
+            </div>
+            <div class="input-group">
+                <label for="apellido">Apellido:</label>
+                <input type="text" id="apellido" name="lastName" formControlName="apellido">
+            </div>
+            <div class="input-group">
+                <label for="correo">E-mail:</label>
+                <input type="email" id="correo" name="email" formControlName="correo">
+            </div>
+            <div class="input-group">
+                <label for="celu">Teléfono:</label>
+                <input type="tel" id="celu" name="phone" formControlName="celu">
+            </div>
+            <div class="input-group">
+                <label for="ubica">Ubicación:</label>
+                <input type="text" id="ubica" name="location" formControlName="ubica">
+            </div>
+            <div class="input-group">
+                <label for="socialUrl">URL Red Social:</label>
+                <input type="url" id="socialUrl" name="socialUrl" formControlName="socialUrl">
+            </div>
+            
+        </div>
+        
+        <div>
+            <p><mat-slide-toggle  id= 'isAdmin' [(ngModel)]="posicion" [ngModelOptions]="{standalone: true}">Usuario Administrador</mat-slide-toggle></p>
+        </div>
+
+        <div class="button-container">
+            <button type="submit">Guardar</button>
+            <button routerLink="biblioteca">Cancelar</button>
+        </div>
+    </form>
+</div>
+<br><br>
+
