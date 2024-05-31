@@ -5,4 +5,79 @@
     padding: 1% 5% 2% 5%;
     border: 1px solid #cc6464;
     border-radius: 5px;
+    background-color: #f9f9f9;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+form div {
+    margin-bottom: 15px;
+}
+
+label {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 5px;
+    color: #333;
+}
+
+input[type="text"],
+input[type="number"],
+textarea {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+textarea {
+    resize: vertical;
+}
+
+button {
+    background-color: #cc6464;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+button:hover {
+    background-color: #b55656;
+}
+
+button:first-of-type {
+    background-color: #777;
+    margin-right: 10px;
+}
+
+button:first-of-type:hover {
+    background-color: #666;
+}
+
+button[type="submit"] {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+button[type="submit"] app-icon-rocket {
+    margin-right: 8px;
+}
+
+@media (max-width: 600px) {
+    .container {
+        padding: 2% 3%;
+    }
+
+    button {
+        padding: 8px 15px;
+        font-size: 14px;
+    }
+
+    button:first-of-type {
+        margin-right: 5px;
+    }
 }

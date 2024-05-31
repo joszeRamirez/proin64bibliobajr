@@ -1,6 +1,7 @@
 .tabla-container {
-  max-width: 750px;
-  margin: 50px auto;
+  max-width: 100%;
+  width: 90%;
+  margin: 20px auto;
   padding: 20px;
   border: 1px solid;
   border-radius: 5px;
@@ -9,10 +10,11 @@
 
 .tabla-container h2 {
   text-align: center;
+  font-size: 1.5em;
 }
 
 table {
-  position: relative;
+  width: 100%;
   border-collapse: collapse;
   text-align: center;
 }
@@ -21,8 +23,7 @@ td,
 th {
   border: 1px solid green;
   padding: 10px;
-  max-width: 300px;
-  width: 300px;
+  width: 100%;
 }
 
 th {
@@ -35,29 +36,25 @@ td {
   text-align: center;
   border-bottom: 2px solid greenyellow;
   color: #333;
-  font-size: 18px;
+  font-size: 16px;
 }
 
-.buscacontainer{
-  margin-bottom: 1%;
+.buscacontainer {
+  margin-bottom: 20px;
+  text-align: center;
 }
 
-
-.buscacontainer{
-  margin-bottom: 1%;
-}
-
-.buscacontainer input{
+.buscacontainer input {
   width: 70%;
-  height: 25px;
-
+  max-width: 300px;
+  height: 30px;
 }
 
 .buscacontainer button {
   background-color: #1c1cbd;
   color: white;
   padding: 6px 15px;
-  margin-left: 5%;
+  margin-left: 10px;
   border: none;
   border-radius: 5px;
   cursor: pointer;
@@ -66,4 +63,41 @@ td {
 
 button:hover {
   background-color: #45a049;
+}
+
+/* Media Queries */
+@media (min-width: 768px) {
+  .tabla-container {
+    max-width: 750px;
+  }
+
+  td, th {
+    width: 300px;
+  }
+
+  .buscacontainer input {
+    width: 50%;
+  }
+}
+
+@media (max-width: 767px) {
+  td, th {
+    display: block;
+    width: 100%;
+    box-sizing: border-box;
+  }
+
+  td {
+    border: none;
+    border-bottom: 1px solid greenyellow;
+  }
+
+  th {
+    display: none;
+  }
+
+  tr {
+    display: block;
+    margin-bottom: 20px;
+  }
 }

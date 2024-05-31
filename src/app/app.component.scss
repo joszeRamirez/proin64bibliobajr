@@ -1,5 +1,23 @@
-/* Estilos: Pie de la Página */
+/* Reseteo de márgenes y padding */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
 
+/* Wrapper para contenido y footer */
+.wrapper {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+/* Contenido principal de la página */
+.content {
+    flex: 1;
+}
+
+/* Estilos: Pie de la Página */
 .piepagina {
     width: 100%;
     background-color: #757575;
@@ -12,9 +30,9 @@
     max-width: 1200px;
     margin: auto;
     display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    grid-gap: 50px;
-    padding: 45px 0px;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    grid-gap: 20px;
+    padding: 15px 0px;
 }
 
 .piepagina .part1 .box {
@@ -38,14 +56,8 @@
 
 .piepagina .part1 .box h2 {
     color: #fff;
-    margin-bottom: 25px;
-    font-size: 20px;
-    font-family: Helvetica;
-}
-
-.piepagina .part1 .box p {
-    color: #efefef;
-    margin-bottom: 10px;
+    margin-bottom: 15px; /* Reducido el margen para dispositivos más pequeños */
+    font-size: 18px; /* Reducido el tamaño para dispositivos más pequeños */
 }
 
 .piepagina .part1 .redsocial {
@@ -55,12 +67,12 @@
 .piepagina .part1 .redsocial a {
     display: inline-block;
     text-decoration: none;
-    width: 45px;
-    height: 45px;
-    line-height: 45px;
+    width: 35px;
+    height: 35px;
+    line-height: 35px;
     color: #fff;
-    margin-right: 10px;
-    margin-bottom: 10px;
+    margin-right: 5px;
+    margin-bottom: 5px;
     background-color: #454545;
     text-align: center;
     transition: all 300ms ease;
@@ -72,26 +84,54 @@
 
 .piepagina .part2 {
     background-color: #454545;
-    padding: 15px 10px;
+    padding: 10px 0;
     text-align: center;
     color: #fff;
 }
 
 .piepagina .part2 small {
-    font-size: 15px;
+    font-size: 13px;
 }
 
-@media screen and (max-width:800px) {
+/* Media query para dispositivos móviles */
+@media screen and (max-width: 800px) {
     .piepagina .part1 {
         grid-template-columns: repeat(1, 1fr);
-        grid-gap: 30px;
-        padding: 35px 0px;
+        grid-gap: 15px; /* Reducido el espacio entre las columnas para dispositivos más pequeños */
+        padding: 10px 0; /* Ajustado el relleno para dispositivos más pequeños */
     }
 
     .piepagina .part1 .box figure img {
-        max-width: 250px;
+        max-width: 150px; /* Reducido el tamaño de la imagen para dispositivos más pequeños */
+    }
+
+    .piepagina .part1 .box h2 {
+        font-size: 16px; /* Reducido el tamaño del título para dispositivos más pequeños */
+    }
+
+    .piepagina .part1 .redsocial a {
+        width: 30px; /* Reducido el tamaño de los iconos para dispositivos más pequeños */
+        height: 30px; /* Reducido el tamaño de los iconos para dispositivos más pequeños */
+        line-height: 30px; /* Reducido el tamaño de los iconos para dispositivos más pequeños */
+        margin-right: 3px; /* Reducido el margen para dispositivos más pequeños */
+        margin-bottom: 3px; /* Reducido el margen para dispositivos más pequeños */
+    }
+
+    .piepagina .part2 small {
+        font-size: 11px; /* Reducido el tamaño del texto para dispositivos más pequeños */
+    }
+
+    /* Estilos específicos para versiones de celular */
+    .piepagina {
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        z-index: 1000;
     }
 }
+
+
+
 
 nav {
     background-color: rgb(93, 89, 89);

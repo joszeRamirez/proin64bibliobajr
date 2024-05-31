@@ -15,14 +15,17 @@ table {
     position: relative;
     border-collapse: collapse;
     text-align: center;
+    width: 100%;
+    overflow-x: auto;
+    display: block;
 }
 
 td,
 th {
     border: 1px solid green;
     padding: 10px;
-    max-width: 300px;
-    width: 300px;
+    width: 100%;
+    box-sizing: border-box;
 }
 
 th {
@@ -38,14 +41,17 @@ td {
     font-size: 18px;
 }
 
-.buscacontainer{
+.buscacontainer {
     margin-bottom: 1%;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
 }
 
-.buscacontainer input{
+.buscacontainer input {
     width: 70%;
     height: 25px;
-
+    margin-bottom: 5px;
 }
 
 .buscacontainer button {
@@ -61,4 +67,31 @@ td {
 
 button:hover {
     background-color: #45a049;
+}
+
+/* Responsivo para pantallas pequeñas */
+@media (max-width: 600px) {
+    .tabla-container {
+        margin: 20px auto;
+        padding: 10px;
+    }
+
+    .tabla-container h2 {
+        font-size: 1.5em;
+    }
+
+    .buscacontainer input {
+        width: 100%;
+        margin-bottom: 10px;
+    }
+
+    .buscacontainer button {
+        margin-left: 0;
+        width: 100%;
+    }
+
+    td, th {
+        padding: 5px;
+        font-size: 14px;
+    }
 }
