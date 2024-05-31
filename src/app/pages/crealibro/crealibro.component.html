@@ -1,121 +1,54 @@
 <div class="container">
     <div>
         <form [formGroup]="form" (ngSubmit)="crearLibro()">
-          <div>
-            <label for="first_name"
-              >Portada:</label
-            >
-            <input
-              type="text"
-              id="portada"
-              
-              formControlName="portada"
-            />
-          </div>
-          <div>
-            <label for="email" 
-              >Título:</label
-            >
-            <input
-              type="text"
-              id="titulo"
-              
-              placeholder="La culpa es de la vaca"
-              formControlName="titulo"
-            />
-          </div>
-          <div>
-            <label for="phoneNumber" 
-              >Autores:</label
-            >
-            <input
-              type="text"
-              id="autores"
-              
-              placeholder="Juan, José"
-              formControlName="autores"
-            />
-          </div>
-          <div>
-            <label for="phoneNumber" 
-              >Editorial:</label
-            >
-            <input
-              type="text"
-              id="editorial"
-              
-              placeholder="Grupo LNS"
-              formControlName="editorial"
-            />
-          </div>
-          <div>
-            <label for="phoneNumber"
-              >Año Edición:</label
-            >
-            <input
-              type="number"
-              id="anioedito"
-              
-              placeholder="2012"
-              formControlName="anioedito"
-            />
-          </div>
-          <div>
-            <label for="phoneNumber"
-              >N° de páginas:</label
-            >
-            <input
-              type="number"
-              id="numpags"
-              
-              placeholder="100"
-              formControlName="numpags"
-            />
-          </div>
-          <div>
-            <label for="phoneNumber"
-              >Idioma:</label
-            >
-            <input
-              type="text"
-              id="idioma"
-              
-              placeholder="Español"
-              formControlName="idioma"
-            />
-          </div>
-          <div >
-            <label for="description"
-              >Resumen</label
-            >
-            <textarea
-              rows="5"
-              type="text"
-              id="resumen"
-              
-              placeholder="Este libro trata de ..."
-              formControlName="resumen"
-            ></textarea>
-          </div>
-  
-          <div >
-            <a
-              routerLink="biblioadmin"
-            >
-              Cancelar
-            </a>
-  
-            <button
-              type="submit"
-            >
-              <app-icon-rocket />
-              @if (libroId) {
-                Guardar Cambios
-              } @else {
-                Ingresar Libro
-              }
-            </button>
-          </div>
+            <div>
+                <label for="portada">Portada:</label>
+                <input type="text" id="portada" formControlName="portada" />
+            </div>
+            <div>
+                <label for="email">Título:</label>
+                <input type="text" id="titulo" placeholder="La culpa es de la vaca" formControlName="titulo" />
+            </div>
+            <div>
+                <label for="phoneNumber">Autores:</label>
+                <input type="text" id="autores" placeholder="Juan, José" formControlName="autores" />
+            </div>
+            <div>
+                <label for="phoneNumber">Editorial:</label>
+                <input type="text" id="editorial" placeholder="Grupo LNS" formControlName="editorial" />
+            </div>
+            <div>
+                <label for="phoneNumber">Año Edición:</label>
+                <input type="number" id="anioedito" placeholder="2012" formControlName="anioedito" />
+            </div>
+            <div>
+                <label for="phoneNumber">N° de páginas:</label>
+                <input type="number" id="numpags" placeholder="100" formControlName="numpags" />
+            </div>
+            <div>
+                <label for="phoneNumber">Idioma:</label>
+                <input type="text" id="idioma" placeholder="Español" formControlName="idioma" />
+            </div>
+            <div>
+                <label for="description">Resumen</label>
+                <textarea rows="5" type="text" id="resumen" placeholder="Este libro trata de ..."
+                    formControlName="resumen"></textarea>
+            </div>
+
+            <div>
+                <a (click)="retroceder()">
+                    Cancelar
+                </a>
+
+                <button type="submit">
+                    <app-icon-rocket />
+                    @if (libroId) {
+                    Guardar Cambios
+                    } @else {
+                    Ingresar Libro
+                    }
+                </button>
+            </div>
         </form>
-      </div>
+    </div>
 </div>

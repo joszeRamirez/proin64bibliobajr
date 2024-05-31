@@ -2,20 +2,23 @@ import { Component } from '@angular/core';
 import { Libro } from '../../../domain/libro';
 import { LibroService } from '../../services/libro.service';
 import { FormsModule } from '@angular/forms';
+import { Router } from '@angular/router';
+import { HeaderComponent } from '../../header/header.component';
 
 @Component({
   selector: 'app-biblioteca',
   standalone: true,
-  imports: [FormsModule],
+  imports: [FormsModule, HeaderComponent],
   templateUrl: './biblioteca.component.html',
   styleUrl: './biblioteca.component.scss'
 })
 export class BibliotecaComponent {
 
+  user : any
   libros: any[] = []
   buscateste: string = ''
 
-  constructor(private libroService: LibroService) { }
+  constructor(private router: Router, private libroService: LibroService) { }
 
   ngOnInit() {
     this.libroService.getLibros().then(data => {
@@ -51,4 +54,15 @@ export class BibliotecaComponent {
     }
   }
 
+  volver() {
+    this.router.navigate(['/biblioteca']);
+  }
+
+  irLogin() {
+    this.router.navigate(['/login']);
+  }
+
+  irRegistro() {
+    this.router.navigate(['/registro']);
+  }
 }

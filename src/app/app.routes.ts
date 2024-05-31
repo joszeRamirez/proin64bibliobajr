@@ -18,6 +18,6 @@ export const routes: Routes = [
   { path: 'listausuario', title: 'Lista usuarios', component: ListausuarioComponent },
   { path: 'crealibro', title: 'Crear libro', component: CrealibroComponent },
   { path: 'editalibro/:libroId', title: 'Editar libro', component: CrealibroComponent },
-  { path: 'edituser', title: 'Editar usuario', component: EdituserComponent }
+  { path: 'edituser/', title: 'Editar usuario', component: EdituserComponent }
 
 ];

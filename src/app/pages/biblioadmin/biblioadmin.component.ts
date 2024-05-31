@@ -6,14 +6,13 @@ import { LibroService } from '../../services/libro.service';
 import { FormControl, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { debounceTime, distinctUntilChanged, of } from 'rxjs';
 import { Router } from '@angular/router';
-import { BuscadorComponent } from '../../buscador/buscador.component';
 import { AsyncPipe } from '@angular/common';
 import { toSignal } from '@angular/core/rxjs-interop';
 
 @Component({
   selector: 'app-biblioadmin',
   standalone: true,
-  imports: [IconDelete, IconEdit, ReactiveFormsModule, BuscadorComponent, AsyncPipe, FormsModule],
+  imports: [IconDelete, IconEdit, ReactiveFormsModule, AsyncPipe, FormsModule],
   templateUrl: './biblioadmin.component.html',
   styleUrl: './biblioadmin.component.scss'
 })

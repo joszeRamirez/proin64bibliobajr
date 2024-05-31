@@ -9,7 +9,8 @@ body {
 }
 
 .login-container {
-  margin-top: 150px; /* Ajustar al medio*/
+  margin-top: 150px;
+  /* Ajustar al medio*/
   text-align: center;
 }
 
@@ -21,15 +22,15 @@ form {
   border-radius: 5px;
   width: 370px;
   margin: auto;
-  height: 280px;
+  height: 350px;
 }
 
 .button-container {
-  text-align: center; 
+  text-align: center;
 }
 
 form div {
-  margin-bottom: 20px; 
+  margin-bottom: 20px;
 }
 
 label {
@@ -53,7 +54,7 @@ button {
   border: none;
   border-radius: 5px;
   cursor: pointer;
-  font-size: 16px; 
+  font-size: 16px;
 }
 
 button:hover {
@@ -61,5 +62,67 @@ button:hover {
 }
 
 .parrafo {
-text-align: center;
+  text-align: center;
+}
+
+.button-providers {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+
+  button {
+    background-color: #1c1cbd;
+    color: white;
+    border: 1px solid #1c1cbd;
+    width: 100%;
+    max-width: 250px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 4px;
+    min-height: 48px;
+    cursor: pointer;
+    transition: all ease-in 0.25s;
+
+    &:hover {
+      background-color: #45a049;
+      color: var(--dark-text);
+    }
+
+    svg {
+      margin-right: 20px;
+    }
+  }
+}
+
+nav {
+  background-color: rgb(93, 89, 89);
+  padding: 10px;
+  display: inline-flex;
+  list-style: none;
+  max-width: 100%;
+}
+
+nav .izq {
+  position: absolute;
+
+  left: 15px;
+}
+
+nav .der {
+  position: absolute;
+
+  right: 15px;
+}
+nav button {
+  color: white;
+  background: none;
+  border: none;
+  padding: 10px 20px;
+  cursor: pointer;
+}
+
+nav button:hover {
+  background-color: rgba(9, 8, 8, 0.1);
 }

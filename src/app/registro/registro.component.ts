@@ -13,7 +13,7 @@ import { FormsModule } from '@angular/forms';
   styleUrls: ['./registro.component.scss']
 })
 export class RegistroComponent {
-  constructor(private router: Router) {}
+  constructor(private router: Router) { }
 
   user: User = new User();
 
@@ -32,5 +32,17 @@ export class RegistroComponent {
         const errorMessage = error.message;
         console.error('Error during registration', errorCode, errorMessage);
       });
+  }
+
+  volver() {
+    this.router.navigate(['/inicio']);
+  }
+
+  irLogin() {
+    this.router.navigate(['/login']);
+  }
+
+  irRegistro() {
+    this.router.navigate(['/registro']);
   }
 }

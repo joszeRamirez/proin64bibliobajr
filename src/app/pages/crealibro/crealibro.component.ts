@@ -49,6 +49,10 @@ export class CrealibroComponent {
     resumen: this.formBuilder.control(''),
   });
 
+  retroceder() {
+    this.router.navigate(['/biblioadmin']);
+  }
+
   async crearLibro() {
     if (this.form.invalid) return;
 

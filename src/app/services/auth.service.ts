@@ -1,23 +1,69 @@
 import { Injectable } from '@angular/core';
-import { AngularFireAuth } from '@angular/fire/compat/auth';
-import { from } from 'rxjs';
+import { Auth, AuthProvider, GoogleAuthProvider, UserCredential, authState, createUserWithEmailAndPassword, signInWithEmailAndPassword, signInWithPopup } from '@angular/fire/auth';
+
+export interface Credential {
+  email: string;
+  password: string;
+}
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
 
-  constructor(private afAuth: AngularFireAuth) { }
+  readonly authState$ = authState(this.afAuth);
 
-  register(email: string, password: string) {
-    return from(this.afAuth.createUserWithEmailAndPassword(email, password));
+  constructor(private afAuth: Auth) { }
+
+
+
+  signUpWithEmailAndPassword(credential: Credential): Promise<UserCredential> {
+    return createUserWithEmailAndPassword(
+      this.afAuth,
+      credential.email,
+      credential.password
+    );
   }
 
-  login(email: string, password: string) {
-    return from(this.afAuth.signInWithEmailAndPassword(email, password));
+  logInWithEmailAndPassword(credential: Credential) {
+    return signInWithEmailAndPassword(
+      this.afAuth,
+      credential.email,
+      credential.password
+    );
   }
 
-  logout() {
-    return from(this.afAuth.signOut());
+  logOut(): Promise<void> {
+    return this.afAuth.signOut();
   }
+
+  // providers
+
+  signInWithGoogleProvider(): Promise<UserCredential> {
+    const provider = new GoogleAuthProvider();
+
+    return this.callPopUp(provider);
+  }
+
+  async callPopUp(provider: AuthProvider): Promise<UserCredential> {
+    try {
+      const result = await signInWithPopup(this.afAuth, provider);
+
+      return result;
+    } catch (error: any) {
+      return error;
+    }
+  }
+
+  // register(email: string, password: string) {
+  //   return from(this.afAuth.createUserWithEmailAndPassword(email, password));
+  // }
+
+  // login(email: string, password: string) {
+  //   return from(this.afAuth.signInWithEmailAndPassword(email, password));
+  // }
+
+  // logout() {
+  //   return from(this.afAuth.signOut());
+  // }
 }
