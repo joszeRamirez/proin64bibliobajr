@@ -29,6 +29,14 @@ export class UserService {
     }
   }
 
+  async searchUserUnico(name: string) {
+    return getDocs(query(
+      collection(this.firestore, 'usuarios'),
+      where('correo', ">=", name),
+      where('correo', "<=", name + '\uf8ff'),
+    ));
+  }
+
   async searchUserByQuery(name: string) {
     return getDocs(query(
       collection(this.firestore, 'usuarios'),

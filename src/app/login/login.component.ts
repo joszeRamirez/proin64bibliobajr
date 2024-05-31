@@ -1,9 +1,11 @@
+import { doc } from 'firebase/firestore';
 import { User } from './../../domain/user';
 import { UserService } from './../services/user.service';
 import { Component, Output, inject } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { Router, RouterModule } from '@angular/router';
 import { AuthService, Credential } from '../services/auth.service';
+import { HeaderComponent } from '../header/header.component';
 
 interface LogInForm {
   email: FormControl<string>;
@@ -22,12 +24,16 @@ export type Provider = 'google';
 export class LoginComponent {
 
   user: User = new User()
-
+  users: any
   isLogin = false;
+
+  correo: string = ''
+  nombre: string = ''
+  admin: boolean = false
 
   formBuilder = inject(FormBuilder);
 
-  constructor(private router: Router, private userService: UserService, private authService: AuthService) { }
+  constructor(private router: Router, private userService: UserService, private authService: AuthService, private header : HeaderComponent) { }
 
   form: FormGroup<LogInForm> = this.formBuilder.group({
     email: this.formBuilder.control('', {
@@ -66,6 +72,7 @@ export class LoginComponent {
       await this.authService.logInWithEmailAndPassword(credential);
       alert("Inició sesión exitosamente 😀");
 
+
       this.router.navigateByUrl('/biblioteca');
     } catch (error) {
       console.error(error);
@@ -81,15 +88,44 @@ export class LoginComponent {
   async signUpWithGoogle(): Promise<void> {
     try {
       const result = await this.authService.signInWithGoogleProvider();
-
-      this.router.navigateByUrl('/biblioteca');
       console.log(result);
+      console.log(result.user.email);
+      this.changeQuery(result.user.email || '')
+      if (this.admin) {
+        this.header.pasarNeim(this.nombre)
+        this.router.navigateByUrl('/biblioadmin');
+      } else {
+        this.header.pasarNeim(this.nombre)
+        this.router.navigateByUrl('/biblioteca');
+      }
+
+
     } catch (error) {
       console.log(error);
     }
   }
 
+  async changeQuery(name: string) {
+    console.log(name)
+    try {
+      await this.userService.searchUserUnico(name).then(data => {
 
+        this.users = data.docs.map((doc: any) => {
+          return {
+            id: doc.id,
+            ...doc.data()
+          }
+        })
+        console.log('usuarios', this.users)
+        this.user=this.users[0]
+        this.nombre=this.user.user
+        this.correo=this.user.correo
+        console.log('usuario', this.user)
+      });
+    } catch (error) {
+      console.error(error)
+    }
+  }
 
   volver() {
     this.router.navigate(['/inicio']);

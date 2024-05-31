@@ -1,5 +1,9 @@
-import { Component, Input } from '@angular/core';
+import { Component, Injectable, Input } from '@angular/core';
 import { Router } from '@angular/router';
+
+@Injectable({
+  providedIn: 'root'
+})
 
 @Component({
   selector: 'app-header',
@@ -9,9 +13,13 @@ import { Router } from '@angular/router';
   styleUrl: './header.component.scss'
 })
 export class HeaderComponent {
-  @Input() usuario: string = ''
+  usuario: string = ''
 
   constructor(private router: Router) { }
 
   abrirPanel() { }
+
+  pasarNeim(name: string) {
+    this.usuario = name;
+  }
 }

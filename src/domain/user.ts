@@ -9,5 +9,5 @@ export class User {
     ubica!: string
     foto!: string
     socialUrl!: string
-    isadmin: number= 0
+    isadmin: boolean= false
 }

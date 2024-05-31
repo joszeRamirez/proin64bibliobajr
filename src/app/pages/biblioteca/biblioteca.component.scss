@@ -62,3 +62,11 @@ td {
 button:hover {
     background-color: #45a049;
 }
+
+nav {
+    background-color: rgb(93, 89, 89);
+    padding: 10px;
+    display: inline-flex;
+    list-style: none;
+    max-width: 100%;
+}

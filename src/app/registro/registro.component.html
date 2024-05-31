@@ -9,7 +9,7 @@
 
 </nav>
 <div class="register-container">
-  <form (ngSubmit)="register()">
+  <form (ngSubmit)="signUp()">
     <h2>Registrarse</h2>
     <p>Al crear tu cuenta en esta biblioteca online podrás acceder a la lista de libros registrados</p><br>
     <div class="input-group">
@@ -43,8 +43,8 @@
       </div>
     </div>
     <div class="button-container">
-      <button (click)="register()">Crear Cuenta</button>
-      <button (click)="register()">Registrarse por Google</button>
+      <button type="submit">Crear Cuenta</button>
+      <button (click)="signUpWithGoogle()">Registrarse por Google</button>
     </div>
 
   </form>

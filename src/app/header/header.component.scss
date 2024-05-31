@@ -1,0 +1,11 @@
+.header button {
+    color: white;
+    background: none;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+}
+
+.header button:hover {
+    background-color: rgba(9, 8, 8, 0.1);
+}

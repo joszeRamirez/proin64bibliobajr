@@ -60,9 +60,9 @@ export class EditusadminComponent {
     try {
       const user = this.form.value as User;
       if (this.posicion){
-        user.isadmin= 1
+        user.isadmin= true
         } else {
-          user.isadmin= 0
+          user.isadmin= false
         }
       !this.userId
         ? this.userservice.addUser(user)
@@ -89,7 +89,7 @@ export class EditusadminComponent {
         socialUrl: user.socialUrl
       });
       console.log(user.isadmin);
-      if (user.isadmin == 0){
+      if (!user.isadmin){
       this.posicion = false
       } else {
         this.posicion = true

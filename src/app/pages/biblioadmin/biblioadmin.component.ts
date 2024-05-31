@@ -6,11 +6,12 @@ import { LibroService } from '../../services/libro.service';
 import { FormControl, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AsyncPipe } from '@angular/common';
+import { HeaderComponent } from '../../header/header.component';
 
 @Component({
   selector: 'app-biblioadmin',
   standalone: true,
-  imports: [IconDelete, IconEdit, ReactiveFormsModule, AsyncPipe, FormsModule],
+  imports: [IconDelete, IconEdit, ReactiveFormsModule, AsyncPipe, FormsModule, HeaderComponent],
   templateUrl: './biblioadmin.component.html',
   styleUrl: './biblioadmin.component.scss'
 })
@@ -46,6 +47,10 @@ export class BiblioadminComponent {
     } catch (error) {
       console.log("no se borró")
     }
+  }
+
+  volver() {
+    this.router.navigate(['/biblioadmin']);
   }
 
   editLibro(libro: Libro) {

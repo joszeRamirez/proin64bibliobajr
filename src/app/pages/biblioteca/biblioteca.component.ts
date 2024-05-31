@@ -14,7 +14,7 @@ import { HeaderComponent } from '../../header/header.component';
 })
 export class BibliotecaComponent {
 
-  user : any
+  user: any
   libros: any[] = []
   buscateste: string = ''
 
@@ -35,6 +35,8 @@ export class BibliotecaComponent {
       console.log('libros', this.libros)
     })
   }
+
+  
 
   async changeQuery() {
     console.log(this.buscateste)
