@@ -9,6 +9,7 @@ import { map } from 'rxjs/operators';
 export class UserService {
   constructor(private firestore: Firestore) { }
 
+<<<<<<< HEAD
   getUsers(): Observable<any[]> {
     const usersCollection = collection(this.firestore, 'usuarios');
     const q = query(usersCollection);
@@ -21,5 +22,23 @@ export class UserService {
         return users;
       })
     );
+=======
+  constructor(private firestore:Firestore) { }
+
+  getUsers() {
+    return getDocs(query(collection(this.firestore, 'usuarios')))
+  }
+
+  addUser(user: User) {
+    addDoc(collection(this.firestore, 'usuarios'), Object.assign({}, user))
+  }
+
+  getUser(user: string){
+    return user
+  }
+
+  deleteUser(user: User){
+
+>>>>>>> 4321257d413047edb52cc5e90a4e7c71e56f6b09
   }
 }

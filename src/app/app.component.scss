@@ -96,10 +96,21 @@
 nav {
     background-color: rgb(93, 89, 89);
     padding: 10px;
-    display: flex;
-    justify-content: flex-end;
+    display: inline-flex;
+    list-style: none;
 }
 
+nav .izq {
+    position: absolute;
+
+    left: 15px;
+}
+
+nav .der {
+    position: absolute;
+
+    right: 15px;
+}
 nav button {
     color: white;
     background: none;

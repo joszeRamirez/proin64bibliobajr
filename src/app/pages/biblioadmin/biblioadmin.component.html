@@ -11,6 +11,7 @@
             <th>Título</th>
             <th>Autores</th>
             <th>Editorial</th>
+            <th>Acciones</th>
         </tr>
         @for(libro of libros; track libro.id){
         <tr>
@@ -18,6 +19,7 @@
             <td>{{libro.titulo}}</td>
             <td>{{libro.autores}}</td>
             <td>{{libro.editorial}}</td>
+            <td><app-icon-edit (click)="editLibro(libro)" /> - <app-icon-delete (click)="deleteLibro(libro.id)" /></td>
         </tr>
         }
 
