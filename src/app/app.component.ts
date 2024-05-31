@@ -11,14 +11,12 @@ import { InicioComponent } from './inicio/inicio.component';
   standalone: true,
   imports: [MatSlideToggleModule, LoginComponent, RegistroComponent, RouterOutlet, InicioComponent],
   templateUrl: './app.component.html',
-  styleUrl: './app.component.scss'
+  styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
   title = 'proinbibliobajr';
 
-
   constructor(private router: Router){}
-
 
   volver() {
     this.router.navigate(['/inicio']);
