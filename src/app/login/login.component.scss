@@ -1,3 +1,23 @@
+/* Estilos de la tabla */
+.table {
+  width: 100%;
+  max-width: 600px; /* Ancho máximo de la tabla */
+  margin: auto;
+  border-collapse: collapse;
+}
+
+.table th,
+.table td {
+  padding: 8px;
+  border: 1px solid #ddd;
+  text-align: left;
+}
+
+.table th {
+  background-color: #f2f2f2;
+}
+
+/* Resto de estilos CSS */
 h2 {
   text-align: center;
 }
@@ -9,20 +29,19 @@ body {
 }
 
 .login-container {
-  margin-top: 150px;
-  /* Ajustar al medio*/
+  margin-top: 50px; 
   text-align: center;
 }
 
 form {
-  display: inline-block;
   text-align: left;
   border: 1px solid #ccc;
   padding: 20px;
   border-radius: 5px;
-  width: 370px;
+  width: 90%; 
+  max-width: 370px; 
   margin: auto;
-  height: 350px;
+  height: auto; 
 }
 
 .button-container {
@@ -126,3 +145,25 @@ nav button {
 nav button:hover {
   background-color: rgba(9, 8, 8, 0.1);
 }
+
+
+@media screen and (max-width: 480px) {
+  .login-container {
+    margin-top: 30px; 
+  }
+  
+  form {
+    padding: 15px;
+    max-width: 100%; /* Ajuste el ancho máximo del formulario para ocupar el ancho completo del dispositivo */
+  }
+
+  /* Ajuste el ancho de los inputs para ocupar el ancho completo del formulario */
+  input[type="text"],
+  input[type="password"] {
+    width: calc(100% - 20px); /* Resta el padding del ancho total */
+  }
+}
+
+
+  
+

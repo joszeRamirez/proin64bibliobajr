@@ -1,50 +1,88 @@
 p {
-    text-align: center;
-    margin: 0 auto;
-    text-align: justify;
+  text-align: center;
+  margin: 0 auto;
+  text-align: justify;
 }
 
-
 .register-container {
-    max-width: 550px;
-    margin: 50px auto;
-    padding: 20px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    background-color: white;
-  }
-  
-  h2 {
-    text-align: center;
-  }
-  
-  form {
-    margin-top: 20px;
-  }
-  
-  div {
-    margin-bottom: 10px;
-  }
-  
-  label {
-    display: block;
-    margin-bottom: 5px;
-  }
-  
-  .input-group {
-    display: flex;
-    margin-bottom: 10px; 
-  }
-  
-  .input-group > div {
-    flex: 1;
-    margin-right: 100px; /* Ajustar margen derecho */
-  }
-  
-  .input-group > div:last-child {
+  max-width: 550px;
+  margin: 50px auto;
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  background-color: white;
+}
+
+h2 {
+  text-align: center;
+}
+
+form {
+  margin-top: 20px;
+}
+
+div {
+  margin-bottom: 10px;
+}
+
+label {
+  display: block;
+  margin-bottom: 5px;
+}
+
+.input-group {
+  display: flex;
+  flex-wrap: wrap;
+  margin-bottom: 10px;
+}
+
+.input-group>div {
+  flex: 1;
+  margin-right: 10px;
+}
+
+.input-group>div:last-child {
+  margin-right: 0;
+}
+
+input[type="email"],
+input[type="text"],
+input[type="password"] {
+  width: 100%;
+  padding: 8px;
+  border-radius: 3px;
+  border: 1px solid #ccc;
+  box-sizing: border-box;
+  margin-bottom: 10px;
+}
+
+.button-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+button {
+  background-color: #1c1cbd;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 3px;
+  cursor: pointer;
+  font-size: 16px;
+  margin: 5px;
+}
+
+button:hover {
+  background-color: #45a049;
+}
+
+@media only screen and (max-width: 600px) {
+  .input-group>div {
+    flex: 1 0 100%;
     margin-right: 0;
   }
-  
+
   input[type="email"],
   input[type="text"],
   input[type="password"] {
@@ -53,13 +91,13 @@ p {
     border-radius: 3px;
     border: 1px solid #ccc;
   }
-  
+
   .button-container {
     display: flex;
-    justify-content: center; 
-    gap: 50px; 
+    justify-content: center;
+    gap: 50px;
   }
-  
+
   button {
     background-color: #1c1cbd;
     color: white;
@@ -69,38 +107,40 @@ p {
     cursor: pointer;
     font-size: 16px;
   }
-  
+
   button:hover {
     background-color: #45a049;
   }
-  
+
   nav {
     background-color: rgb(93, 89, 89);
     padding: 10px;
     display: inline-flex;
     list-style: none;
     max-width: 100%;
-}
+  }
 
-nav .izq {
+  nav .izq {
     position: absolute;
 
     left: 15px;
-}
+  }
 
-nav .der {
+  nav .der {
     position: absolute;
 
     right: 15px;
-}
-nav button {
+  }
+
+  nav button {
     color: white;
     background: none;
     border: none;
     padding: 10px 20px;
     cursor: pointer;
-}
+  }
 
-nav button:hover {
+  nav button:hover {
     background-color: rgba(9, 8, 8, 0.1);
+  }
 }
