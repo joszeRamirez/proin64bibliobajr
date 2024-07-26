@@ -1,0 +1,36 @@
+<div class="tabla-container">
+  <h2>Gestión de Préstamos</h2>
+  <button (click)="abrirFormulario()">Registrar Préstamo</button>
+  <table>
+    <thead>
+      <tr>
+        <th>Libro</th>
+        <th>Usuario</th>
+        <th>Fecha de Préstamo</th>
+        <th>Fecha de Devolución</th>
+        <th>Estado</th>
+        <th>Acciones</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let prestamo of prestamos">
+        <td>{{ prestamo.libroId }}</td>
+        <td>{{ prestamo.userId }}</td>
+        <td>{{ prestamo.fechaPrestamo | date }}</td>
+        <td>{{ prestamo.fechaDevolucion | date }}</td>
+        <td>{{ prestamo.estado }}</td>
+        <td>
+          <button (click)="devolverLibro(prestamo.id)">Devolver</button>
+          <button (click)="editarPrestamo(prestamo.id)">Editar</button>
+          <button (click)="eliminarPrestamo(prestamo.id)">Eliminar</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+  <app-formprestamo
+  *ngIf="mostrarFormulario"
+  (cerrar)="cerrarFormulario()"
+  [prestamo]="prestamoSeleccionado">
+</app-formprestamo>
+
+</div>

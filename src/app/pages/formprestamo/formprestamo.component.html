@@ -1,0 +1,30 @@
+<div class="form-container">
+    <form [formGroup]="form" (ngSubmit)="submit()">
+      <div>
+        <label for="libroId">ID del Libro:</label>
+        <input type="text" id="libroId" formControlName="libroId">
+      </div>
+      <div>
+        <label for="userId">ID del Usuario:</label>
+        <input type="text" id="userId" formControlName="userId">
+      </div>
+      <div>
+        <label for="fechaPrestamo">Fecha de Préstamo:</label>
+        <input type="date" id="fechaPrestamo" formControlName="fechaPrestamo">
+      </div>
+      <div>
+        <label for="fechaDevolucion">Fecha de Devolución:</label>
+        <input type="date" id="fechaDevolucion" formControlName="fechaDevolucion">
+      </div>
+      <div>
+        <label for="estado">Estado:</label>
+        <select id="estado" formControlName="estado">
+          <option value="prestado">Prestado</option>
+          <option value="devuelto">Devuelto</option>
+        </select>
+      </div>
+      <button type="submit">Guardar</button>
+      <button type="button" (click)="cancelar()">Cancelar</button>
+    </form>
+  </div>
+  

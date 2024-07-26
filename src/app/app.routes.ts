@@ -8,6 +8,7 @@ import { listausuario } from './pages/listausuario/listausuario.component';
 import { InicioComponent } from './inicio/inicio.component';
 import { BiblioadminComponent } from './pages/biblioadmin/biblioadmin.component';
 import { EditusadminComponent } from './pages/editusadmin/editusadmin.component';
+import { PrestamosComponent } from './pages/prestamos/prestamos.component';
 
 export const routes: Routes = [
   { path: '', redirectTo: '/inicio', pathMatch: 'full' },
@@ -20,5 +21,6 @@ export const routes: Routes = [
   { path: 'crealibro', title: 'Crear libro', component: CrealibroComponent },
   { path: 'editalibro/:libroId', title: 'Editar libro', component: CrealibroComponent },
   { path: 'edituser/:userId', title: 'Editar usuario', component: EdituserComponent },
-  { path: 'edituseradmin/:userId', title: 'Editar usuario', component: EditusadminComponent }
+  { path: 'edituseradmin/:userId', title: 'Editar usuario', component: EditusadminComponent },
+  { path: 'prestamos', title: 'Gestión de Préstamos', component: PrestamosComponent } 
 ];

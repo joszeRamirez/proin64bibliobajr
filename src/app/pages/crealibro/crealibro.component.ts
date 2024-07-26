@@ -10,6 +10,7 @@ export interface CreateForm {
   titulo: FormControl<string>;
   autores: FormControl<string>;
   editorial: FormControl<string>;
+  estado: FormControl<'disponible' | 'prestado' | 'reservado'>; //new variable 
   anioedito: FormControl<number>;
   numpags: FormControl<number>;
   idioma: FormControl<string>;
@@ -43,6 +44,7 @@ export class CrealibroComponent {
     titulo: this.formBuilder.control('', Validators.required),
     autores: this.formBuilder.control('', Validators.required),
     editorial: this.formBuilder.control('', Validators.required),
+    estado: this.formBuilder.control<'disponible' | 'prestado' | 'reservado'>('disponible', Validators.required),
     anioedito: this.formBuilder.control(0, Validators.min(4)),
     numpags: this.formBuilder.control(0, Validators.min(1)),
     idioma: this.formBuilder.control('', Validators.required),
@@ -75,6 +77,7 @@ export class CrealibroComponent {
         titulo: libro.titulo,
         autores: libro.autores,
         editorial: libro.editorial,
+        estado: libro.estado,
         anioedito: libro.anioedito,
         numpags: libro.numpags,
         idioma: libro.idioma,
