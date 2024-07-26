@@ -4,6 +4,7 @@ import { UserService } from '../../services/user.service';
 import { FormControl, NonNullableFormBuilder, Validators } from '@angular/forms';
 import { User } from '../../../domain/user';
 import { ReactiveFormsModule } from '@angular/forms';
+import { HeaderComponent } from '../../header/header.component';
 
 export interface CreateForm {
   user: FormControl<string>;
@@ -21,7 +22,7 @@ export interface CreateForm {
 @Component({
   selector: 'app-edituser',
   standalone: true,
-  imports: [ReactiveFormsModule, RouterLink],
+  imports: [ReactiveFormsModule, RouterLink, HeaderComponent],
   templateUrl: './edituser.component.html',
   styleUrl: './edituser.component.scss'
 })
@@ -51,6 +52,10 @@ export class EdituserComponent {
     foto: this.formBuilder.control(''),
     socialUrl: this.formBuilder.control('')
   });
+
+  volver() {
+    this.router.navigate(['/biblioteca']);
+  }
 
   async editUser() {
     if (this.form.invalid) return;

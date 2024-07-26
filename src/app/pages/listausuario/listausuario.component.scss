@@ -71,7 +71,8 @@ button:hover {
     max-width: 750px;
   }
 
-  td, th {
+  td,
+  th {
     width: 300px;
   }
 
@@ -81,7 +82,9 @@ button:hover {
 }
 
 @media (max-width: 767px) {
-  td, th {
+
+  td,
+  th {
     display: block;
     width: 100%;
     box-sizing: border-box;
@@ -100,4 +103,12 @@ button:hover {
     display: block;
     margin-bottom: 20px;
   }
+}
+
+nav {
+  background-color: rgb(93, 89, 89);
+  padding: 10px;
+  display: inline-flex;
+  list-style: none;
+  max-width: 100%;
 }
