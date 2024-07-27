@@ -1,30 +1,37 @@
 import { Injectable } from '@angular/core';
 import { Prestamo } from '../../domain/prestamo';
-import { Observable } from 'rxjs';
-import { HttpClient } from '@angular/common/http';
+import { addDoc, collection, deleteDoc, doc, getDoc, getDocs, query, updateDoc, where } from '@angular/fire/firestore';
+import { Firestore } from 'firebase/firestore';
+
+const PATH = 'prestamos';
 
 @Injectable({
   providedIn: 'root'
 })
 export class PrestamoService {
 
-  private apiUrl = 'http://localhost:4200/prestamos';
 
-  constructor(private http: HttpClient) { }
+  constructor(private firestore: Firestore) { }
 
-  getPrestamos(): Observable<Prestamo[]> {
-    return this.http.get<Prestamo[]>(this.apiUrl);
+  getPrestamos() {
+    return getDocs(query(collection(this.firestore, PATH)));
   }
 
-  addPrestamo(prestamo: Prestamo): Observable<Prestamo> {
-    return this.http.post<Prestamo>(this.apiUrl, prestamo);
+  addPrestamo(prestamo: Prestamo) {
+    return addDoc(collection(this.firestore, PATH), Object.assign({}, prestamo));
   }
 
-  updatePrestamo(id: string, prestamo: Prestamo): Observable<Prestamo> {
-    return this.http.put<Prestamo>(`${this.apiUrl}/${id}`, prestamo);
+  async registrarDevolucion(prestamoId: string) {
+    const prestamoDoc = this.document(prestamoId);
+    const prestamoSnapshot = await getDoc(prestamoDoc);
+    if (prestamoSnapshot.exists()) {
+      const prestamoData = prestamoSnapshot.data() as Prestamo;
+      prestamoData.fechaDevolucion = new Date(); // Asignar una fecha de devolución como Date
+      return updateDoc(prestamoDoc, { ...prestamoData });
+    }
   }
 
-  deletePrestamo(id: string): Observable<void> {
-    return this.http.delete<void>(`${this.apiUrl}/${id}`);
+  private document(id: string) {
+    return doc(this.firestore, `${PATH}/${id}`);
   }
 }

@@ -1,36 +1,25 @@
-<div class="tabla-container">
-  <h2>Gestión de Préstamos</h2>
-  <button (click)="abrirFormulario()">Registrar Préstamo</button>
-  <table>
-    <thead>
-      <tr>
-        <th>Libro</th>
-        <th>Usuario</th>
-        <th>Fecha de Préstamo</th>
-        <th>Fecha de Devolución</th>
-        <th>Estado</th>
-        <th>Acciones</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr *ngFor="let prestamo of prestamos">
-        <td>{{ prestamo.libroId }}</td>
-        <td>{{ prestamo.userId }}</td>
-        <td>{{ prestamo.fechaPrestamo | date }}</td>
-        <td>{{ prestamo.fechaDevolucion | date }}</td>
-        <td>{{ prestamo.estado }}</td>
-        <td>
-          <button (click)="devolverLibro(prestamo.id)">Devolver</button>
-          <button (click)="editarPrestamo(prestamo.id)">Editar</button>
-          <button (click)="eliminarPrestamo(prestamo.id)">Eliminar</button>
-        </td>
-      </tr>
-    </tbody>
-  </table>
-  <app-formprestamo
-  *ngIf="mostrarFormulario"
-  (cerrar)="cerrarFormulario()"
-  [prestamo]="prestamoSeleccionado">
-</app-formprestamo>
+<form (ngSubmit)="registrarPrestamo()">
+  <div>
+    <label for="libro">Libro:</label>
+    <select id="libro" [(ngModel)]="nuevoPrestamo.libroId" name="libro">
+      <option *ngFor="let libro of libros" [value]="libro.id">{{ libro.titulo }}</option>
+    </select>
+  </div>
+  <div>
+    <label for="usuario">Usuario:</label>
+    <input id="usuario" [(ngModel)]="nuevoPrestamo.usuarioId" name="usuario" required>
+  </div>
+  <div>
+    <label for="fechaPrestamo">Fecha de Préstamo:</label>
+    <input id="fechaPrestamo" type="date" [(ngModel)]="nuevoPrestamo.fechaPrestamo" name="fechaPrestamo" required>
+  </div>
+  <button type="submit">Registrar Préstamo</button>
+</form>
 
-</div>
+<h2>Lista de Préstamos</h2>
+<ul>
+  <li *ngFor="let prestamo of prestamos">
+    {{ prestamo.libroId }} - {{ prestamo.usuarioId }} - {{ prestamo.fechaPrestamo | date:'mediumDate' }}
+    <button (click)="devolverLibro(prestamo)">Devolver</button>
+  </li>
+</ul>
