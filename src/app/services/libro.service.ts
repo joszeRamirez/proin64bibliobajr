@@ -48,7 +48,9 @@ export class LibroService {
     return deleteDoc(this.document(PATH_LIBROS, id));
   }
 
-  addPrestamo(prestamo: Prestamo) {
+  async addPrestamo(prestamo: Prestamo) {
+    const libroDoc = this.document(PATH_LIBROS, prestamo.libroId);
+    await updateDoc(libroDoc, { estado: 'prestado' });
     return addDoc(collection(this.firestore, PATH_PRESTAMOS), Object.assign({}, prestamo));
   }
 
@@ -57,19 +59,15 @@ export class LibroService {
   }
 
   async registrarDevolucion(prestamoId: string) {
-    const prestamoDoc = await getDoc(this.document(PATH_PRESTAMOS, prestamoId));
-    const prestamo = prestamoDoc.data() as Prestamo;
+    const docSnapshot = await getDoc(this.document(PATH_PRESTAMOS, prestamoId));
+    const prestamo = docSnapshot.data() as Prestamo;
     if (prestamo) {
+      await this.updateLibro(prestamo.libroId, { estado: 'disponible' });
       await deleteDoc(this.document(PATH_PRESTAMOS, prestamoId));
-      const libroDoc = await getDoc(this.document(PATH_LIBROS, prestamo.libroId));
-      if (libroDoc.exists()) {
-        const libro = libroDoc.data() as Libro;
-        await updateDoc(this.document(PATH_LIBROS, prestamo.libroId), { ...libro, estado: 'disponible' });
-      }
     }
   }
 
-  private document(path: string, id: string) {
-    return doc(this.firestore, `${path}/${id}`);
+  private document(collectionPath: string, id: string) {
+    return doc(this.firestore, `${collectionPath}/${id}`);
   }
 }

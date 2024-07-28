@@ -1,4 +1,4 @@
-<div>
+<div class="container">
   <h2>Registro de Préstamos</h2>
   <form (submit)="registrarPrestamo()">
     <select [(ngModel)]="nuevoPrestamo.libroId" name="libroId" required>
@@ -16,6 +16,13 @@
     <li *ngFor="let prestamo of prestamos">
       {{ getLibroTitulo(prestamo.libroId) }} - {{ prestamo.usuarioId }} - {{ prestamo.fechaPrestamo | date:'mediumDate' }}
       <button (click)="devolverLibro(prestamo)">Devolver</button>
+    </li>
+  </ul>
+
+  <h2>Lista de Libros Disponibles</h2>
+  <ul>
+    <li *ngFor="let libro of libros">
+      {{ libro.titulo }} - Estado: {{ libro.estado }}
     </li>
   </ul>
 </div>
