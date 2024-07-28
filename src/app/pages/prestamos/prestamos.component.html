@@ -1,25 +1,21 @@
-<form (ngSubmit)="registrarPrestamo()">
-  <div>
-    <label for="libro">Libro:</label>
-    <select id="libro" [(ngModel)]="nuevoPrestamo.libroId" name="libro">
-      <option *ngFor="let libro of libros" [value]="libro.id">{{ libro.titulo }}</option>
+<div>
+  <h2>Registro de Préstamos</h2>
+  <form (submit)="registrarPrestamo()">
+    <select [(ngModel)]="nuevoPrestamo.libroId" name="libroId" required>
+      <option *ngFor="let libro of libros" [value]="libro.id">
+        {{ libro.titulo }}
+      </option>
     </select>
-  </div>
-  <div>
-    <label for="usuario">Usuario:</label>
-    <input id="usuario" [(ngModel)]="nuevoPrestamo.usuarioId" name="usuario" required>
-  </div>
-  <div>
-    <label for="fechaPrestamo">Fecha de Préstamo:</label>
-    <input id="fechaPrestamo" type="date" [(ngModel)]="nuevoPrestamo.fechaPrestamo" name="fechaPrestamo" required>
-  </div>
-  <button type="submit">Registrar Préstamo</button>
-</form>
+    <input type="text" [(ngModel)]="nuevoPrestamo.usuarioId" name="usuarioId" placeholder="Usuario" required>
+    <input type="date" [(ngModel)]="nuevoPrestamo.fechaPrestamo" name="fechaPrestamo" required>
+    <button type="submit">Registrar Préstamo</button>
+  </form>
 
-<h2>Lista de Préstamos</h2>
-<ul>
-  <li *ngFor="let prestamo of prestamos">
-    {{ prestamo.libroId }} - {{ prestamo.usuarioId }} - {{ prestamo.fechaPrestamo | date:'mediumDate' }}
-    <button (click)="devolverLibro(prestamo)">Devolver</button>
-  </li>
-</ul>
+  <h2>Lista de Préstamos</h2>
+  <ul>
+    <li *ngFor="let prestamo of prestamos">
+      {{ getLibroTitulo(prestamo.libroId) }} - {{ prestamo.usuarioId }} - {{ prestamo.fechaPrestamo | date:'mediumDate' }}
+      <button (click)="devolverLibro(prestamo)">Devolver</button>
+    </li>
+  </ul>
+</div>

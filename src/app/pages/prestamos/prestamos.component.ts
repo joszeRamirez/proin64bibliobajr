@@ -21,10 +21,7 @@ export class PrestamoComponent implements OnInit {
   libros: Libro[] = [];
   nuevoPrestamo: Prestamo = new Prestamo();
 
-  constructor(
-    private libroService: LibroService,
-    private prestamoService: PrestamoService
-  ) { }
+  constructor(private libroService: LibroService) { }
 
   ngOnInit(): void {
     this.cargarPrestamos();
@@ -32,33 +29,33 @@ export class PrestamoComponent implements OnInit {
   }
 
   cargarPrestamos() {
-    this.prestamoService.getPrestamos().then(snapshot => {
-      this.prestamos = snapshot.docs.map((doc: any) => {
-        const data = doc.data();
-        data.fechaPrestamo = data.fechaPrestamo.toDate(); // Convertir a objeto Date
-        data.fechaDevolucion = data.fechaDevolucion ? data.fechaDevolucion.toDate() : undefined; // Convertir a objeto Date si existe
-        return { id: doc.id, ...data } as Prestamo;
-      });
+    this.libroService.getPrestamos().then(snapshot => {
+      this.prestamos = snapshot.docs.map(doc => ({ id: doc.id, ...doc.data() } as Prestamo));
     });
   }
 
   cargarLibros() {
     this.libroService.getLibros().then(snapshot => {
-      this.libros = snapshot.docs.map((doc: any) => ({ id: doc.id, ...doc.data() } as Libro));
+      this.libros = snapshot.docs.map(doc => ({ id: doc.id, ...doc.data() } as Libro));
     });
   }
 
   registrarPrestamo() {
-    this.nuevoPrestamo.fechaPrestamo = new Date(this.nuevoPrestamo.fechaPrestamo); // Asegurar que sea Date
-    this.prestamoService.addPrestamo(this.nuevoPrestamo).then(() => {
+    this.libroService.addPrestamo(this.nuevoPrestamo).then(() => {
       this.cargarPrestamos();
       this.nuevoPrestamo = new Prestamo();
     });
   }
 
   devolverLibro(prestamo: Prestamo) {
-    this.prestamoService.registrarDevolucion(prestamo.id).then(() => {
+    this.libroService.registrarDevolucion(prestamo.id).then(() => {
       this.cargarPrestamos();
+      this.cargarLibros(); // Asegúrate de recargar los libros para actualizar los estados
     });
+  }
+
+  getLibroTitulo(libroId: string): string {
+    const libro = this.libros.find(l => l.id === libroId);
+    return libro ? libro.titulo : 'Desconocido';
   }
 }

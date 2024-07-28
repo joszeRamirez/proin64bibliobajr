@@ -21,17 +21,9 @@ export class PrestamoService {
     return addDoc(collection(this.firestore, PATH), Object.assign({}, prestamo));
   }
 
-  async registrarDevolucion(prestamoId: string) {
-    const prestamoDoc = this.document(prestamoId);
-    const prestamoSnapshot = await getDoc(prestamoDoc);
-    if (prestamoSnapshot.exists()) {
-      const prestamoData = prestamoSnapshot.data() as Prestamo;
-      prestamoData.fechaDevolucion = new Date(); // Asignar una fecha de devolución como Date
-      return updateDoc(prestamoDoc, { ...prestamoData });
-    }
-  }
-
-  private document(id: string) {
-    return doc(this.firestore, `${PATH}/${id}`);
+  registrarDevolucion(prestamoId: string) {
+    return updateDoc(doc(this.firestore, `${PATH}/${prestamoId}`), {
+      fechaDevolucion: new Date()
+    });
   }
 }
