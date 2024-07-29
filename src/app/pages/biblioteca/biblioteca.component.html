@@ -3,31 +3,44 @@
         <h1> BibliotecaBAJR</h1>
     </div>
     <div>
-        <app-header />
+        <app-header></app-header>
     </div>
 </nav>
 <div class="tabla-container">
     <h2>Colección de Libros</h2>
     <div class="buscacontainer">
-        <input type="text" placeholder="Buscar libros" [(ngModel)]="buscateste" />
-        <button (click)="changeQuery()"> Buscar</button>
+        <div class="search-row">
+            <input type="text" placeholder="Buscar por título" [(ngModel)]="buscaTitulo" />
+            <input type="text" placeholder="Buscar por autor" [(ngModel)]="buscaAutor" />
+        </div>
+        <div class="filter-row">
+            <select [(ngModel)]="filtroCategoria">
+                <option value="">Categoría</option>
+                <option *ngFor="let categoria of categorias" [value]="categoria">{{categoria}}</option>
+            </select>
+            <select [(ngModel)]="filtroDisponibilidad">
+                <option value="">Disponibilidad</option>
+                <option value="disponible">Disponible</option>
+                <option value="prestado">Prestado</option>
+            </select>
+        </div>
+        <div class="button-row">
+            <button (click)="changeQuery()">Buscar</button>
+            <button (click)="clearFilters()">Limpiar Filtros</button>
+        </div>
     </div>
     <table>
-
         <tr>
             <th>Portada</th>
             <th>Título</th>
             <th>Autores</th>
             <th>Editorial</th>
         </tr>
-        @for(libro of libros; track libro.id){
-        <tr>
-            <td><img src="{{libro.portada}}" /></td>
+        <tr *ngFor="let libro of librosFiltrados">
+            <td><img [src]="libro.portada" alt="Portada del libro" /></td>
             <td>{{libro.titulo}}</td>
             <td>{{libro.autores}}</td>
             <td>{{libro.editorial}}</td>
         </tr>
-        }
-
     </table>
 </div>

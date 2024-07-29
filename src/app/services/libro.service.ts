@@ -12,7 +12,6 @@ const PATH_PRESTAMOS = 'prestamos';
 })
 
 export class LibroService {
-
   constructor(private firestore: Firestore) { }
 
   getLibros() {
@@ -35,8 +34,8 @@ export class LibroService {
   async searchLibroByQuery(name: string) {
     return getDocs(query(
       collection(this.firestore, PATH_LIBROS),
-      where('titulo', ">=", name),
-      where('titulo', "<=", name + '\uf8ff'),
+      where('titulo', '>=', name),
+      where('titulo', '<=', name + '\uf8ff')
     ));
   }
 

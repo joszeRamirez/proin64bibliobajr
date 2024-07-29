@@ -1,28 +1,43 @@
-<div class="container">
-  <h2>Registro de Préstamos</h2>
-  <form (submit)="registrarPrestamo()">
-    <select [(ngModel)]="nuevoPrestamo.libroId" name="libroId" required>
-      <option *ngFor="let libro of libros" [value]="libro.id">
-        {{ libro.titulo }}
-      </option>
-    </select>
-    <input type="text" [(ngModel)]="nuevoPrestamo.usuarioId" name="usuarioId" placeholder="Usuario" required>
-    <input type="date" [(ngModel)]="nuevoPrestamo.fechaPrestamo" name="fechaPrestamo" required>
-    <button type="submit">Registrar Préstamo</button>
-  </form>
+<div class="form-container">
+  <div class="form-section">
+    <h2>Registro de Préstamos</h2>
+    <form (ngSubmit)="registrarPrestamo()">
+      <label for="fechaPrestamo">Fecha de Préstamo</label>
+      <input id="fechaPrestamo" type="date" [(ngModel)]="nuevoPrestamo.fechaPrestamo" name="fechaPrestamo" required>
 
-  <h2>Lista de Préstamos</h2>
-  <ul>
-    <li *ngFor="let prestamo of prestamos">
-      {{ getLibroTitulo(prestamo.libroId) }} - {{ prestamo.usuarioId }} - {{ prestamo.fechaPrestamo | date:'mediumDate' }}
-      <button (click)="devolverLibro(prestamo)">Devolver</button>
-    </li>
-  </ul>
+      <label for="libroId">Libro</label>
+      <select id="libroId" [(ngModel)]="nuevoPrestamo.libroId" name="libroId" required>
+        <option *ngFor="let libro of libros" [value]="libro.id" [disabled]="libro.estado !== 'disponible'">
+          {{ libro.titulo }} - Estado: {{ libro.estado || 'disponible' }}
+        </option>
+      </select>
 
-  <h2>Lista de Libros Disponibles</h2>
-  <ul>
-    <li *ngFor="let libro of libros">
-      {{ libro.titulo }} - Estado: {{ libro.estado }}
-    </li>
-  </ul>
+      <button type="submit">Registrar Préstamo</button>
+    </form>
+  </div>
+
+  <div class="list-section">
+    <h2>Lista de Préstamos</h2>
+    <ul>
+      <li *ngFor="let prestamo of prestamos">
+        {{ getLibroTitulo(prestamo.libroId) }} - {{ prestamo.usuarioId }} - {{ prestamo.fechaPrestamo | date:'shortDate' }}
+        <button (click)="devolverLibro(prestamo)">Devolver</button>
+      </li>
+    </ul>
+  </div>
 </div>
+
+<div class="tabla-container">
+  <h2>Lista de Libros</h2>
+  <div class="book-details" *ngFor="let libro of libros" [ngClass]="{
+    'borrowed': libro.estado === 'prestado',
+    'available': libro.estado === 'disponible'
+  }">
+    <img [src]="libro.portada" alt="{{ libro.titulo }}">
+    <div>
+      <h5>{{ libro.titulo }}</h5>
+      <span>{{ libro.autores }}</span>
+      <span>{{ libro.editorial }}</span>
+      <span>Estado: {{ libro.estado }}</span>
+    </div>
+  </div>

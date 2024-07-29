@@ -1,30 +1,36 @@
+html, body {
+    height: 100%;
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+}
+
 .tabla-container {
     max-width: 750px;
     margin: 50px auto;
     padding: 20px;
-    border: 1px solid;
-    border-radius: 5px;
-    background-color: white;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    background-color: #fff;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 }
 
-.tabla-container h2 {
-    text-align: center;
+.table-wrapper {
+    display: flex;
+    justify-content: center;
+    overflow-x: auto;
 }
 
 table {
-    position: relative;
     border-collapse: collapse;
     text-align: center;
     width: 100%;
-    overflow-x: auto;
-    display: block;
+    max-width: 100%;
 }
 
-td,
-th {
+td, th {
     border: 1px solid green;
     padding: 10px;
-    width: 100%;
     box-sizing: border-box;
 }
 
@@ -41,31 +47,57 @@ td {
     font-size: 18px;
 }
 
+td img {
+    max-width: 80px;
+    max-height: 120px;
+    object-fit: cover;
+    border-radius: 5px;
+}
+
 .buscacontainer {
     margin-bottom: 1%;
     display: flex;
-    justify-content: center;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.search-row,
+.filter-row {
+    display: flex;
+    gap: 10px;
+    justify-content: flex-start;
     flex-wrap: wrap;
 }
 
-.buscacontainer input {
-    width: 70%;
-    height: 25px;
-    margin-bottom: 5px;
+.search-row input,
+.filter-row select {
+    width: 350px;
+    height: 30px;
+    padding: 5px;
+    box-sizing: border-box;
 }
 
-.buscacontainer button {
+.button-row {
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+}
+
+.button-row button {
     background-color: #1c1cbd;
     color: white;
     padding: 6px 15px;
-    margin-left: 5%;
+    margin: 5px;
     border: none;
     border-radius: 5px;
     cursor: pointer;
     font-size: 16px;
+    height: 30px;
+    display: flex;
+    align-items: center;
 }
 
-button:hover {
+.button-row button:hover {
     background-color: #45a049;
 }
 
@@ -76,7 +108,7 @@ nav {
     list-style: none;
     max-width: 100%;
 }
-/* Responsivo para pantallas pequeñas */
+
 @media (max-width: 600px) {
     .tabla-container {
         margin: 20px auto;
@@ -87,16 +119,13 @@ nav {
         font-size: 1.5em;
     }
 
-    .buscacontainer input {
+    .buscacontainer input,
+    .buscacontainer select,
+    .buscacontainer button {
         width: 100%;
         margin-bottom: 10px;
     }
-
-    .buscacontainer button {
-        margin-left: 0;
-        width: 100%;
-    }
-
+    
     td, th {
         padding: 5px;
         font-size: 14px;

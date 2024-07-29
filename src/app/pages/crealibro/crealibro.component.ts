@@ -16,6 +16,7 @@ export interface CreateForm {
   numpags: FormControl<number>;
   idioma: FormControl<string>;
   resumen: FormControl<string>;
+  categoria: FormControl<string>;
 }
 
 @Component({
@@ -46,30 +47,34 @@ export class CrealibroComponent {
     autores: this.formBuilder.control('', Validators.required),
     editorial: this.formBuilder.control('', Validators.required),
     estado: this.formBuilder.control<'disponible' | 'prestado' | 'reservado'>('disponible', Validators.required),
-    anioedito: this.formBuilder.control(0, Validators.min(4)),
+    anioedito: this.formBuilder.control(0, Validators.min(1900)),
     numpags: this.formBuilder.control(0, Validators.min(1)),
     idioma: this.formBuilder.control('', Validators.required),
     resumen: this.formBuilder.control(''),
+    categoria: this.formBuilder.control('', Validators.required)
   });
+
   retroceder() {
     this.router.navigate(['/biblioadmin']);
   }
-  
+
   volver() {
     this.router.navigate(['/biblioteca']);
   }
-  
+
   async crearLibro() {
     if (this.form.invalid) return;
 
     try {
       const libro = this.form.value as Libro;
-      !this.libroId
-        ? this.libroService.addLibro(libro)
-        : this.libroService.updateLibro(this.libroId, libro);
+      if (!this.libroId) {
+        await this.libroService.addLibro(libro);
+      } else {
+        await this.libroService.updateLibro(this.libroId, libro);
+      }
       this.router.navigate(['/biblioadmin']);
     } catch (error) {
-      // call some toast service to handle the error
+      
     }
   }
 
@@ -86,8 +91,11 @@ export class CrealibroComponent {
         anioedito: libro.anioedito,
         numpags: libro.numpags,
         idioma: libro.idioma,
-        resumen: libro.resumen
+        resumen: libro.resumen,
+        categoria: libro.categoria
       });
-    } catch (error) { }
+    } catch (error) {
+      
+    }
   }
 }

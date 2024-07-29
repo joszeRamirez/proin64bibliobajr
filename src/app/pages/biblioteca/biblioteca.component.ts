@@ -4,56 +4,66 @@ import { LibroService } from '../../services/libro.service';
 import { FormsModule } from '@angular/forms';
 import { Router } from '@angular/router';
 import { HeaderComponent } from '../../header/header.component';
+import { OnInit } from '@angular/core';
+import { CommonModule, NgFor } from '@angular/common';
 
 @Component({
   selector: 'app-biblioteca',
   standalone: true,
-  imports: [FormsModule, HeaderComponent],
+  imports: [FormsModule, HeaderComponent, CommonModule],
   templateUrl: './biblioteca.component.html',
   styleUrl: './biblioteca.component.scss'
 })
-export class BibliotecaComponent {
-
-  user: any
-  libros: any[] = []
-  buscateste: string = ''
+export class BibliotecaComponent implements OnInit {
+  user: any;
+  libros: any[] = [];
+  librosFiltrados: any[] = [];
+  buscaTitulo: string = '';
+  buscaAutor: string = '';
+  filtroCategoria: string = '';
+  filtroDisponibilidad: string = '';
+  categorias: string[] = ['Drama', 'Terror', 'Acción', 'Autoayuda', 'Tecnología', 'Ciencia ficción'];
 
   constructor(private router: Router, private libroService: LibroService) { }
 
   ngOnInit() {
-    this.libroService.getLibros().then(data => {
-
-      this.libros = data.docs.map((doc: any) => {
-        console.log(doc.id)
-        console.log(doc.data())
-        return {
-          id: doc.id,
-          ...doc.data()
-        }
-      })
-
-      console.log('libros', this.libros)
-    })
+    this.loadLibros();
   }
 
-  
-
-  async changeQuery() {
-    console.log(this.buscateste)
+  async loadLibros() {
     try {
-      await this.libroService.searchLibroByQuery(this.buscateste).then(data => {
-
-        this.libros = data.docs.map((doc: any) => {
-          return {
-            id: doc.id,
-            ...doc.data()
-          }
-        })
-        console.log('libros', this.libros)
-      });
+      const data = await this.libroService.getLibros();
+      this.libros = data.docs.map((doc: any) => ({
+        id: doc.id,
+        ...doc.data()
+      }));
+      this.librosFiltrados = [...this.libros];
     } catch (error) {
-      console.error(error)
+      console.error(error);
     }
+  }
+
+  filterLibros() {
+    this.librosFiltrados = this.libros.filter(libro => {
+      const tituloCoincide = this.buscaTitulo ? libro.titulo.toLowerCase().includes(this.buscaTitulo.toLowerCase()) : true;
+      const autorCoincide = this.buscaAutor ? libro.autores.toLowerCase().includes(this.buscaAutor.toLowerCase()) : true;
+      const categoriaCoincide = this.filtroCategoria ? libro.categoria === this.filtroCategoria : true;
+      const disponibilidadCoincide = this.filtroDisponibilidad ? libro.estado === this.filtroDisponibilidad : true;
+
+      return tituloCoincide && autorCoincide && categoriaCoincide && disponibilidadCoincide;
+    });
+  }
+
+  clearFilters() {
+    this.buscaTitulo = '';
+    this.buscaAutor = '';
+    this.filtroCategoria = '';
+    this.filtroDisponibilidad = '';
+    this.librosFiltrados = [...this.libros];
+  }
+
+  changeQuery() {
+    this.filterLibros();
   }
 
   volver() {

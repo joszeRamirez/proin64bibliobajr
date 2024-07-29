@@ -6,6 +6,7 @@ import { LibroService } from '../../services/libro.service';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { PrestamoService } from '../../services/prestamo.service';
+import { AuthService } from '../../services/auth.service';
 
 
 @Component({
@@ -20,10 +21,17 @@ export class PrestamoComponent implements OnInit {
   prestamos: Prestamo[] = [];
   libros: Libro[] = [];
   nuevoPrestamo: Prestamo = new Prestamo();
+  usuarioActual: string = '';
 
-  constructor(private libroService: LibroService) { }
+  constructor(private libroService: LibroService, private authService: AuthService) { }
 
   ngOnInit(): void {
+    this.authService.authState$.subscribe(user => {
+      if (user) {
+        this.usuarioActual = user.displayName || user.email || 'Usuario';
+      }
+    });
+
     this.cargarPrestamos();
     this.cargarLibros();
   }
@@ -47,10 +55,10 @@ export class PrestamoComponent implements OnInit {
   }
 
   registrarPrestamo() {
+    this.nuevoPrestamo.usuarioId = this.usuarioActual;
     this.libroService.addPrestamo(this.nuevoPrestamo).then(() => {
       this.cargarPrestamos();
       this.cargarLibros();
-      this.nuevoPrestamo = new Prestamo();
     });
   }
 
